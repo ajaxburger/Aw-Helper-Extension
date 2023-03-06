@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "version": "1.0.0",
-  "author": "Andrew Niziolek, andrew.niziolek@awin.com",
+  "author": "Andrew Niziolek, Chris DiGrazio",
 
   "name": "Awin Append Helper",
   "description": "This extension is to assist Awin Technical Staff in generating query appends.",
