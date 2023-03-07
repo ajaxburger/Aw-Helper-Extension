@@ -23,19 +23,25 @@ button:active{
   background-color:#FF9100;
 }
 
+button:hover {
+  cursor:pointer;
+}
+
 /*Checkbox Grid Classes*/
 .optionContainer {
 	background-color: #616161;
 	display: grid;
-	grid-template-columns: 2.25fr 1fr;
+	grid-template-columns: 1fr .35fr;
 	margin: 15px;
 	border-radius: 25px;
 	padding: 10px;
+  padding-left: 35px;
+  text-align: left;
 }
 
-.option {
-	align-items: center;
-	justify-content: center;
+.opttext {
+  border-left: 2px solid #FF9100;
+  padding-left: 15px;
 }
 
 input[type="checkbox"] {
