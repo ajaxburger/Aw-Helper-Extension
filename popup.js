@@ -1,38 +1,53 @@
+/* Defining button variables */
 const fbtn = document.getElementById("fillbutton");
+const resbtn = document.getElementById("resetButton")
+
+/* Output Box */
 const outField = document.getElementById("opBox");
 var ampCounter = 0; /* Counts the number of values checked */
 
-const aid = document.getElementById("affID");
+/* Defining cb values */
+const promo = document.getElementById("promo");
 const sourCh = document.getElementById("sourCh");
 const sourMe = document.getElementById("sourMe");
 const camp = document.getElementById("camp");
 
-var aidout, sourChOut, sourMeOut, campOut;
-aidOut = sourChOut = sourMeOut = campOut = "";
+/* Output Variables */
+var promoOut, sourChOut, sourMeOut, campOut;
+promoOut = sourChOut = sourMeOut = campOut = "";
 
+let outputObject = {promo, sourCh, sourMe, camp};
+
+/* Listens for click on fill button, outputs based on condition */
 fbtn.addEventListener('click', function(){
 
-    if(aid.checked == true){
-        aidOut = "!!!affid!!!"
-        ampCounter ++
+    if(promo.checked == true){
+        promoOut = "utm_content=!!!promotype!!!"
     }
-    if(sourCh.checked == true){
-        sourChOut = "sourChChecked"
-        ampCounter ++
-    }
-    if(sourMe.checked == true){
-        sourMeOut = "sourMeChecked"
-        ampCounter ++
-    }
-    /* Add rest of checks here */
-    else{
-        alert("Nothing is checked")
 
+    if(sourCh.checked == true){
+        sourChOut = "utm_source=aw"
+    }
+
+    if(sourMe.checked == true){
+        sourMeOut = "utm_medium=awin"
+    }
+
+    if(camp.check == true){
+        campOut = "utm_campaign=!!!id!!!"
     }
 
     function combineOutput(){
         
-    }
+    };
 
-    outField.value += combineOutput();
+    outField.value = combineOutput();
+
+});
+
+/* Reset output button */
+resbtn.addEventListener('click', function(){
+
+    outField.value = "";
+
 });

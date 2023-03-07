@@ -25,8 +25,8 @@
 		<form>
 		<div class="optionContainer">   
 		
-			<p class="option"> Affiliate ID </p> 
-			<input type="checkbox" class="option" id="affID">
+			<p class="option"> Promo Type </p> 
+			<input type="checkbox" class="option" id="promo">
 
 			<p class="option"> Source Channel </p>
 			<input type="checkbox" class="option" id="sourCh">
@@ -34,7 +34,7 @@
 			<p class="option"> Source Medium </p>
 			<input type="checkbox" class="option" id="sourMe">
 
-			<p class="option"> Campaign </p>
+			<p class="option"> Campaign / Pub ID</p>
 			<input type="checkbox" class="option" id="camp">
 
 			<p class="option"> Checkbox 5 </p>
@@ -50,6 +50,10 @@
 		<div class="opDiv">
 			<label for="opBox">Generated Output: </label>
 			<input type="text" id="opBox" readonly="readonly"></input>
+		</div>
+
+		<div class="resetDiv">
+			<button type="button" id="resetButton">Reset Output</button>	
 		</div>
 
 		<script src="popup.js"></script>
