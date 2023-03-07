@@ -56,10 +56,13 @@ input[type="checkbox"] {
   margin-bottom: 25px;
 }
 
-#opBox {
+input[type="text"]#opBox {
   border-radius: 5px;
   width: 150px;
   height: 25px;
 
+  color: white;
+  border: none;
   background-color: #757575;
+  text-align: left;
 }
