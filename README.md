@@ -1,4 +1,4 @@
-# Helper Chrome Ext
+# Awin Helper Extension
  
 This bot is intended to assist Awin Staff in attaching Default Query String Appends for their clients.
 
