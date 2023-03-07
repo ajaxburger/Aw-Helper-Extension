@@ -9,13 +9,13 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-/*Fill Button Properties*/
+/*Generate Button Properties*/
 button {
   color:white;
   background-color:#616161;
   border: 1.9px solid #616161;
   border-radius: 25px;
-  margin: 5px 5px 5px 5px;
+  margin: 5px;
 }
 
 button:active{
@@ -23,14 +23,7 @@ button:active{
   background-color:#FF9100;
 }
 
-/*Upper and Lower Body Classes*/
-.upper{
-  }
-
-.lower{
-}
-
-/*Checkbox-related classes*/
+/*Checkbox Grid Classes*/
 .optionContainer {
 	background-color: #616161;
 	display: grid;
@@ -41,7 +34,6 @@ button:active{
 }
 
 .option {
-	display: inline-block;
 	align-items: center;
 	justify-content: center;
 }
