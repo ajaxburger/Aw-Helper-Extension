@@ -1,4 +1,4 @@
-document.querySelector('#fillbutton').addEventListener('click', (event) => {
+/* document.querySelector('#fillbutton').addEventListener('click', (event) => {
   // Permissions must be requested from inside a user gesture, like a button's
   // click handler.
   chrome.permissions.request({
@@ -12,4 +12,4 @@ document.querySelector('#fillbutton').addEventListener('click', (event) => {
       doSomethingElse();
     }
   });
-});
+}); */

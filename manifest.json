@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Andrew Niziolek, Chris DiGrazio",
 
-  "name": "Awin Append Helper",
+  "name": "Awin Helper",
   "description": "This extension is to assist Awin Technical Staff in generating query appends.",
 
   "icons": {
