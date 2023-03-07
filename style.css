@@ -1,54 +1,52 @@
-html {background-color: #424242}
+html {
+  background-color: #424242;
+}
 
 body{
   color: white;
   width: 300px;
-  padding-bottom: 5px;
+  text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.upper{
-  padding-left: 0px;
-  padding-right: 0px;
-  margin: auto;
-
-  text-align: center;
-  }
-
-.lower{
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: auto;
-
-  text-align: center;
-}
-
-fieldset {
-  background-color: #616161;
-}
-
+/*Fill Button Properties*/
 button {
-  color: white;
-  background-color: #616161;
-  border-style: solid #616161;
-  border-radius: 5px;
-
-  margin: 5px 5px 20px 5px;
+  color:white;
+  background-color:#616161;
+  border: 1.9px solid #616161;
+  border-radius: 25px;
+  margin: 5px 5px 5px 5px;
 }
 
 button:active{
-  color: white;
-  background-color: #FF9100;
-  border-style: solid #616161;
-  border-radius: 5px;
-
-  margin: 5px 5px 20px 5px;
+  color:black;
+  background-color:#FF9100;
 }
 
-input[type="checkbox"] { 
-  position: absolute;
+/*Upper and Lower Body Classes*/
+.upper{
+  }
+
+.lower{
 }
-input[type="checkbox"] ~ label { 
-  padding-left:1.4em;
-  display:inline-block;
+
+/*Checkbox-related classes*/
+.optionContainer {
+	background-color: #616161;
+	display: grid;
+	grid-template-columns: 2.25fr 1fr;
+	margin: 15px;
+	border-radius: 25px;
+	padding: 10px;
+}
+
+.option {
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+}
+
+input[type="checkbox"] {
+	accent-color:#FF9100;
+	width: 1.3em;
 }
