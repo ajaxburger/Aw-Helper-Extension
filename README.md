@@ -1,6 +1,6 @@
 # Awin Helper Extension
  
-This bot is intended to assist Awin Staff in attaching Default Query String Appends for their clients.
+This extension is intended for use by Awin Staff to assist in the setup of their clients' accounts.
 
 ## General Use Instructions
 
