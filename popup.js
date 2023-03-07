@@ -1,5 +1,5 @@
 const fbtn = document.getElementById("fillbutton");
-const outField = document.getElementById("outputField");
+const outField = document.getElementById("opBox");
 var ampCounter = 0; /* Counts the number of values checked */
 
 const aid = document.getElementById("affID");
@@ -34,5 +34,5 @@ fbtn.addEventListener('click', function(){
         
     }
 
-    outField.value = aidOut + "&" + sourChOut
+    outField.value += combineOutput();
 });
