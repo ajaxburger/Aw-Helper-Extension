@@ -4,7 +4,7 @@
   "author": "Andrew Niziolek, Chris DiGrazio",
 
   "name": "Awin Helper",
-  "description": "This extension is to assist Awin Technical Staff in generating query appends.",
+  "description": "This extension is to assist Awin Staff in generating query appends. This is a community-made extension.",
 
   "icons": {
     "16": "assets/icon16.png",
