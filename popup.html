@@ -12,53 +12,58 @@
 		<title>Awin Helper</title>
 	</head>
 
-	<body class="upper">
-		<h3>Awin Helper</h3>
+	<body class="mainBody">
 
-		<p>Choose from the below potential appends.</p>	
+		<!-- Append Helper -->
+		<body class="upper">
+			<h3>Awin Helper</h3>
+
+			<p>Choose from the below potential appends.</p>	
 
 
-		<button type="button" id="fillbutton">Generate</button>	
-	</body>
+			<button type="button" id="fillbutton">Generate</button>	
+		</body>
 
-	<body class="lower">
-		<form>
-		<div class="optionContainer">   
+		<body class="lower">
+			<form>
+			<div class="optionContainer">   
 			
-			<p class="option opttext"> Promo Type </p> 
-			<input type="checkbox" class="option" id="promo">
+				<p class="option opttext"> Promo Type </p> 
+				<input type="checkbox" class="option" id="promo">
 
-			<p class="option opttext"> Source Channel </p>
-			<input type="checkbox" class="option" id="sourCh">
+				<p class="option opttext"> Source Channel </p>
+				<input type="checkbox" class="option" id="sourCh">
 
-			<p class="option opttext"> Source Medium </p>
-			<input type="checkbox" class="option" id="sourMe">
+				<p class="option opttext"> Source Medium </p>
+				<input type="checkbox" class="option" id="sourMe">
 
-			<p class="option opttext"> Campaign / Pub ID</p>
-			<input type="checkbox" class="option" id="camp">
-<!--
-			<p class="option opttext"> Checkbox 5 </p>
-			<input type="checkbox" class="option" id="Check5">
+				<p class="option opttext"> Campaign / Pub ID</p>
+				<input type="checkbox" class="option" id="camp">
+			<!--
+				<p class="option opttext"> Checkbox 5 </p>
+				<input type="checkbox" class="option" id="Check5">
 
-			<p class="option opttext"> Checkbox 6 </p>
-			<input type="checkbox" class="option" id="Check6">
--->
-		</div>
+				<p class="option opttext"> Checkbox 6 </p>
+				<input type="checkbox" class="option" id="Check6">
+			-->
+			</div>
     
-		</form>
+			</form>
 
-		<div class="opDiv">
-			<label for="opBox">Output:</label>
-			<input type="text" id="opBox" readonly="readonly"></input>
+			<div class="opDiv">
+				<label for="opBox">Output:</label>
+				<input type="text" id="opBox" readonly="readonly"></input>
 
-			<button type="button" id="resetButton">
-				<svg xmlns="http://www.w3.org/2000/svg" class="reset-icon" width = 20 height = 20 viewBox="-3 -4 22 22">
-					<path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192Zm3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z"/>
-				</svg>
-			</button>	
-		</div>
+				<button type="button" id="resetButton">
+					<svg xmlns="http://www.w3.org/2000/svg" class="reset-icon" width = 20 height = 20 viewBox="-3 -4 22 22">
+						<path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192Zm3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z"/>
+					</svg>
+				</button>	
+			</div>
 
-		<script src="popup.js"></script>
+			<script src="appendHelper.js"></script>
+		</body>
+
 	</body>
 
 </html>
