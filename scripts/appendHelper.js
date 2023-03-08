@@ -4,7 +4,6 @@ const resbtn = document.getElementById("resetButton")
 
 /* Output Box */
 const outField = document.getElementById("opBox");
-var ampCounter = 0; /* Counts the number of values checked */
 
 /* Defining cb values */
 const promo = document.getElementById("promo");
