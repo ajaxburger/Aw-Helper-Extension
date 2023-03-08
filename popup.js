@@ -22,26 +22,26 @@ let outputObject = {promo, sourCh, sourMe, camp};
 fbtn.addEventListener('click', function(){
 
     if(promo.checked == true){
-        promoOut = "utm_content=!!!promotype!!!"
+        promoOut = "utm_content=!!!promotype!!!&"
     }
 
     if(sourCh.checked == true){
-        sourChOut = "utm_source=aw"
+        sourChOut = "utm_source=aw&"
     }
 
     if(sourMe.checked == true){
-        sourMeOut = "utm_medium=awin"
+        sourMeOut = "utm_medium=awin&"
     }
 
     if(camp.check == true){
-        campOut = "utm_campaign=!!!id!!!"
+        campOut = "utm_campaign=!!!id!!!&"
     }
 
-    function combineOutput(){
-        
-    };
+    var combineOutput;
 
-    outField.value = combineOutput();
+    combineOutput = promoOut + sourChOut + sourMeOut + campOut
+
+    outField.value = combineOutput;
 
 });
 
