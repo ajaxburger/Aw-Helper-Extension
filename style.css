@@ -50,14 +50,12 @@ input[type="checkbox"] {
 }
 
 /* Text box related classes */
-.opDiv{
-}
-
 input[type="text"]#opBox {
   border-radius: 5px;
   width: 150px;
   height: 25px;
-
+  margin-left: 10px;
+  margin-bottom: 8px;
   color: white;
   border: none;
   background-color: #757575;
