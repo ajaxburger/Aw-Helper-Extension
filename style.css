@@ -28,7 +28,8 @@ body{
 }
 
 .collapsible:after {
-  color: white;
+  color: transparent;
+  text-shadow: 0 0 0 white;
   content: '\02795'; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
   float: right;
