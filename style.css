@@ -15,15 +15,27 @@ body{
   font-family: Helvetica, Arial, sans-serif;
 }
 
+/* Header Styling */
 .headerDiv{
-  align-items: center;
+  display: grid;
+  grid-template-columns: .15fr 1fr .15fr;
+  grid-template-areas: "a b c";
   background: #fb8a00c7;
-  display: flex;
-  height: 2.5rem;
   justify-content: center;
+  align-items: center;
+  height: 2.5rem;
   padding: 0 1.5rem;
 }
 
+.headText{
+  grid-area: b;
+}
+
+.headVer{
+  grid-area: c;
+}
+
+/* External Buttons */
 .extButtons{
   display: grid;
   grid-template-columns: .5fr .5fr .5fr;
