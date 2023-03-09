@@ -28,6 +28,38 @@ body{
   cursor: pointer;
 }
 
+/* Clipboard Classes */
+.clipLegend{
+  background-color: #616161;
+  color: white;
+  text-align: left;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.clipDiv{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 4px;
+
+  margin: 3px 0px 3px 0px;
+}
+
+.clipInput{
+  border-radius: 5px;
+
+  height: 25px;
+  color: white;
+  border: none;
+  background-color: #757575;
+  text-align: left;
+}
+
+.clipInput::placeholder{
+  color: #414141;
+}
+
 /* Collapse Section Dividers */
 hr.solid {
   border-top: 1px solid #ff91007a;

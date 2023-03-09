@@ -12,6 +12,12 @@
     "128": "assets/icon128.png"
   },
 
-  "action": {"default_popup": "popup.html"}
+  "action": {"default_popup": "popup.html"},
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "permissions": ["storage"]
 
 }
