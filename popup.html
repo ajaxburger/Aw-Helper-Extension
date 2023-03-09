@@ -13,8 +13,10 @@
 	</head>
 
 	<body class="mainBody">
-
-		<h3>Awin Helper</h3>
+		<div class="headerDiv">
+			<h3 class="headText">Awin Helper</h3>
+			<p class="headVer">1.1.0</p>
+		</div>
 
 		<div class="extButtons">
 			<button type="button" class="link-button" id="UINav">UI</button>	
@@ -22,6 +24,15 @@
 			<button type="button" class="link-button" id="OPANav">Old Prov. Area</button>
 			<script src="/scripts/navButton.js"></script>
 		</div>
+
+		<fieldset>
+			<legend class="clipLegend">Clipboard</legend>
+			<div class="clipDiv">
+			<input type="text" id="clipMID" placeholder=" Merchant ID" class="clipInput"></input>
+			<input type="text" id="clipCR" placeholder=" Commission Rate" class="clipInput"></input>
+			<input type="text" id="clipNF" placeholder=" Network Fee" class="clipInput"></input>
+			</div>
+		</fieldset>
 
 		<hr class="solid">
 
@@ -74,6 +85,7 @@
 			<!-- End Append Helper -->
 
 	<script src="/scripts/collapse.js"></script>
+	<script src="/scripts/background.js"></script>
 	</body>
 
 </html>

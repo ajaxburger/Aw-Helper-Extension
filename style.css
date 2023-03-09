@@ -1,37 +1,97 @@
+/* --- Color Palette ---
+  Orange 500 #FF9800, accent 
+  Gray 50 (mixed)
+*/
+
+
 html {
-  background-color: #424242;
+  background-color: #212121;
 }
 
 body{
   color: white;
   width: 300px;
   text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
+/* Header Styling */
+.headerDiv{
+  display: grid;
+  grid-template-columns: .15fr 1fr .15fr;
+  grid-template-areas: "a b c";
+  background: #fb8a00c7;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 1.5rem;
+}
+
+.headText{
+  grid-area: b;
+}
+
+.headVer{
+  grid-area: c;
+}
+
+/* External Buttons */
 .extButtons{
   display: grid;
   grid-template-columns: .5fr .5fr .5fr;
   gap: 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .link-button {
   color: white;
   border: none;
-  background-color: #616161;
+  background-color: #424242;
   transition: 0.2s;
 }
 
 .link-button:hover{
-  background-color: #FF9100;
+  background-color: #FF9800;
   cursor: pointer;
+}
+
+/* Clipboard Classes */
+.clipLegend{
+  background-color: #424242;
+  color: white;
+  text-align: left;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.clipDiv{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 4px;
+
+  margin: 3px 0px 3px 0px;
+}
+
+.clipInput{
+  border-radius: 5px;
+
+  height: 25px;
+  color: white;
+  border: none;
+  background-color: #757575;
+  text-align: left;
+}
+
+.clipInput::placeholder{
+  color: #424242;
 }
 
 /* Collapse Section Dividers */
 hr.solid {
-  border-top: 1px solid #ff91007a;
-  border-bottom: 1px solid #ff91007a;
+  border-top: 1px solid #FF98007a;
+  border-bottom: 1px solid #FF98007a;
 
   border-right-width: 0px;
   border-left-width: 0px;
@@ -43,7 +103,7 @@ hr.solid {
 
 .collapsible {
   color: white;
-  background-color: #616161;
+  background-color: #424242;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -55,7 +115,7 @@ hr.solid {
 }
 
 .active, .collapsible:hover {
-  background-color: #FF9100;
+  background-color: #FF9800;
 }
 
 .collapsible:after {
@@ -83,20 +143,20 @@ hr.solid {
 /*Generate Button Properties*/
 .append-button {
   color:white;
-  background-color:#616161;
-  border: 1.9px solid #616161;
+  background-color:#424242;
+  border: 1.9px solid #424242;
   border-radius: 25px;
   margin: 5px;
   transition: 0.2s;
 }
 
 .append-button:hover{
-  background-color: #FF9100;
+  background-color: #FF9800;
 }
 
 .append-button:active{
   color:black;
-  background-color:#FF9100;
+  background-color:#FF9800;
 }
 
 .append-button:hover {
@@ -105,10 +165,10 @@ hr.solid {
 
 /*Checkbox Grid Classes*/
 .optionContainer {
-	background-color: #616161;
+	background-color: #424242;
 	display: grid;
 	grid-template-columns: 1fr .35fr;
-	margin: 15px;
+	margin: 10px;
 	border-radius: 10px;
 	padding: 10px;
   padding-left: 35px;
@@ -116,12 +176,12 @@ hr.solid {
 }
 
 .opttext {
-  border-left: 2px solid #FF9100;
+  border-left: 2px solid #FF9800;
   padding-left: 15px;
 }
 
 input[type="checkbox"] {
-	accent-color:#FF9100;
+	accent-color:#FF9800;
 	width: 1.3em;
   cursor: pointer;
 }
