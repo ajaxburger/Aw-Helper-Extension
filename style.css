@@ -35,6 +35,10 @@ body{
   grid-area: c;
 }
 
+.headVPN{
+  grid-area: a;
+}
+
 /* External Buttons */
 .extButtons{
   display: grid;
