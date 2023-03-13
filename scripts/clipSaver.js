@@ -1,13 +1,34 @@
-const MIDBox = document.getElementById("clipMID");
-const MIDBoxData = MIDBox.textContent;
+const MIDBox = document.getElementById("clipMID"); // MID Box
+const CRBox = document.getElementById("clipCR");
+const NFBox = document.getElementById("clipNF");
 
-const MIDKey = 'MIDKey';
-const MIDValue = { name: MIDBoxData};
+// Empty vars for Chrome storage
+var MIDSave = "";
+var MIDStoredVal = null;
 
-chrome.storage.local.set({MIDKey: MIDValue}, () => {
-    alert('Stored name: ' + value.name)
-});
+window.onload = function() {
 
-chrome.storage.local.get([MIDKey], (result) => {
-    alert('Retrieved name: ' + MIDKey.textContent.MIDKey.name)
-})
+        if (MIDStoredVal != null) {
+
+            chrome.storage.sync.get(['MIDSave']).then((MIDRecall) => {
+                const MIDStoredVal = MIDSave;
+        
+                alert(MIDStoredVal);
+
+            }); 
+
+            MIDBox.value = MIDStoredVal;
+            console.log("Value loaded from storage: " + MIDStoredVal);
+        }
+};
+
+const save = document.getElementById("saveBtn").onclick = function(){
+    var MIDBoxData = MIDBox.value;
+    // alert(MIDBoxData);
+
+    chrome.storage.sync.set({'MIDSave': MIDBoxData}, function(){
+        alert('Save Success' + MIDBoxData)
+    });
+};
+
+
