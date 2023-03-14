@@ -1,33 +1,57 @@
-const MIDBox = document.getElementById("clipMID"); // MID Box
+// Capturing text boxes
+const MIDBox = document.getElementById("clipMID");
 const CRBox = document.getElementById("clipCR");
 const NFBox = document.getElementById("clipNF");
 
-// Empty vars for Chrome storage
-var MIDSave = "";
-var MIDStoredVal = null;
+// Get value from storage, catch if undefined and ignore error.
+chrome.storage.local.get("MIDSave", function(MIDRecall) {
 
-window.onload = function() {
+    if(typeof MIDRecall == 'undefined'){
+        return;
+    }
+    else {
+        MIDBox.value = MIDRecall.MIDSave;
+    }
 
-        if (MIDStoredVal != null) {
+});
 
-            chrome.storage.sync.get(['MIDSave']).then((MIDRecall) => {
-                const MIDStoredVal = MIDSave;
-        
-                alert(MIDStoredVal);
+chrome.storage.local.get("CRSave", function(CRRecall) {
 
-            }); 
+    if(typeof CRRecall == 'undefined'){
+        return;
+    }
+    else {
+        CRBox.value = CRRecall.CRSave;
+    }
 
-            MIDBox.value = MIDStoredVal;
-            console.log("Value loaded from storage: " + MIDStoredVal);
-        }
-};
+});
+
+chrome.storage.local.get("NFSave", function(NFRecall) {
+
+    if(typeof NFRecall == 'undefined'){
+        return;
+    }
+    else {
+        NFBox.value = NFRecall.NFSave;
+    }
+
+});
+
+// Future auto-saving goes here
+
 
 const save = document.getElementById("saveBtn").onclick = function(){
     var MIDBoxData = MIDBox.value;
-    // alert(MIDBoxData);
+    var CRBoxData = CRBox.value;
+    var NFBoxData = NFBox.value;
 
-    chrome.storage.sync.set({'MIDSave': MIDBoxData}, function(){
-        alert('Save Success' + MIDBoxData)
+    chrome.storage.local.set({'MIDSave': MIDBoxData}, function(){
+    });
+
+    chrome.storage.local.set({'CRSave': CRBoxData}, function(){
+    });
+
+    chrome.storage.local.set({'NFSave': NFBoxData}, function(){
     });
 };
 
