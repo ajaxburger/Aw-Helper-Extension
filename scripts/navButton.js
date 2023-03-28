@@ -8,14 +8,13 @@ const OProvArbtn = document.getElementById("OPANav");
 var OPAURL = "https://ui.awin.com/user/redirect/v1-provider/r/aHR0cHM6Ly91aTIuYXdpbi5jb20vYWRtaW5hcmVhL3Byb3ZpZGVyLw==";
 
 UIbtn.addEventListener('click', function(){
-    chrome.tabs.create({ url : UIURL })
+    chrome.tabs.create({ url : UIURL });
 });
 
 ProvArbtn.addEventListener('click', function(){
-    chrome.tabs.create({ url : PAURL })
+    chrome.tabs.create({ url : PAURL });
 });
 
 OProvArbtn.addEventListener('click', function(){
-    chrome.tabs.create({ url : OPAURL })
-});
-    
+    chrome.tabs.create({ url : OPAURL });
+});    
