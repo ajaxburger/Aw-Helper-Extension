@@ -37,10 +37,36 @@ chrome.storage.local.get("NFSave", function(NFRecall) {
 
 });
 
-// Future auto-saving goes here
+// Auto saving input as they're typed.
 
+MIDBox.addEventListener("input", function () {
+    var MIDBoxData = MIDBox.value;
 
-const save = document.getElementById("saveBtn").onclick = function(){
+    chrome.storage.local.set({'MIDSave': MIDBoxData}, function(){
+    });
+
+});
+
+CRBox.addEventListener("input", function(){
+    var CRBoxData = CRBox.value;
+
+    chrome.storage.local.set({'CRSave': CRBoxData}, function(){
+    });
+});
+
+NFBox.addEventListener("input", function () {
+    var NFBoxData = NFBox.value;
+
+    chrome.storage.local.set({'NFSave': NFBoxData}, function(){
+    });
+});
+
+// Clear button auto-saves data.
+
+const clear = document.getElementById("clearClipBtn").onclick = function (){
+    
+    MIDBox.value = ""; CRBox.value = ""; NFBox.value = "";
+
     var MIDBoxData = MIDBox.value;
     var CRBoxData = CRBox.value;
     var NFBoxData = NFBox.value;
@@ -53,6 +79,8 @@ const save = document.getElementById("saveBtn").onclick = function(){
 
     chrome.storage.local.set({'NFSave': NFBoxData}, function(){
     });
-};
+
+
+}
 
 

@@ -3,7 +3,6 @@
   Gray 50 (mixed)
 */
 
-
 html {
   background-color: #212121;
 }
@@ -13,6 +12,22 @@ body{
   width: 300px;
   text-align: center;
   font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Scroll Bar */
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #424242;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FF9800;
 }
 
 /* Header Styling */
@@ -116,6 +131,7 @@ hr.solid {
   outline: none;
   font-size: 14px;
   transition: 0.2s;
+  margin-bottom: 3px;
 }
 
 .active, .collapsible:hover {
@@ -140,6 +156,12 @@ hr.solid {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+
+/* -- New Impl -- */
+
+.newImplDiv {
+  margin-bottom: 2px;
 }
 
 /* -- Append Helper -- */

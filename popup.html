@@ -31,13 +31,52 @@
 					<input type="text" id="clipMID" placeholder=" Merchant ID" class="clipInput"></input>
 					<input type="text" id="clipCR" placeholder=" Commission Rate" class="clipInput"></input>
 					<input type="text" id="clipNF" placeholder=" Network Fee" class="clipInput"></input>
-					<button type="button" class="append-button" id="saveBtn">Save</button>				
+					<button type="button" class="append-button" id="clearClipBtn">Clear</button>				
 				</div>
 
 			</fieldset>
 		<script src="/scripts/clipSaver.js"></script>
 
 		<hr class="solid">
+
+		<fieldset>
+			<legend class="clipLegend">Technologies</legend>
+			<div class="techDiv">
+				<p id="GTMstatus">Checking for Google Tag Manager...</p>				
+			</div>
+		</fieldset>
+		
+		<script src="scripts/techDetect.js"></script>
+
+		<hr class="solid">
+
+		<!-- New Impl -->
+		<button type="button" class="collapsible">New Implementation</button>
+			<div class="collapse-content">
+				<body class="upper">
+
+					<p>Please enter the new MID and click begin. Works best when connected to the VPN.</p>
+					<p>This will open a number of tabs, it is recommended to do this in a new Window.</p>	
+	
+				</body>
+
+				<body class="lower">
+
+					<div class="newImplDiv">
+
+					<input type="text" id="implMID" placeholder=" Merchant ID" class="clipInput"></input>
+					<button type="button" class="append-button" id="newImplBtn">Go</button>	
+
+					</div>
+
+				</body>
+
+				<hr class="solid">
+
+				<script src="/scripts/newImpl.js"></script>
+				</body>
+			</div>
+			<!-- End New Impl -->
 
 		<!-- Append Helper -->
 		<button type="button" class="collapsible">Append Helper</button>
@@ -88,6 +127,7 @@
 			<!-- End Append Helper -->
 
 	<script src="/scripts/collapse.js"></script>
+
 	</body>
 
 </html>
