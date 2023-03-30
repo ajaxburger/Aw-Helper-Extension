@@ -2,6 +2,8 @@
  
 This extension is intended for use by Awin Staff to assist in the setup of their clients' accounts.
 
+Available on the Chrome Webstore (v 1.0) - https://chrome.google.com/webstore/detail/awin-helper/ddfnphknakdknhcolehloanbkeppaomo?hl=en&authuser=0
+
 ## General Use Instructions
 
 To use the Awin Helper Extention, install the extension from the Google Webstore, Firefox Marketplace or Microsoft Webstore. If you wish to use your own modified version of the plugin, download this repository and install the unpackaged extension manually.
