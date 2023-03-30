@@ -18,7 +18,8 @@ goBtn.addEventListener("click", () => {
     `https://ui.awin.com/advertiser-mastertag/us/awin/${MIDValue}/trackingtagsettings`,
     `https://ui.awin.com/provider/merchant-settings/${MIDValue}/account-details/network/awin`,
     `https://ui.awin.com/provider/finance/fee-manager/en/${MIDValue}`,
-    `https://ui.awin.com/provider/merchant-settings/${MIDValue}/mobile-tracking/network/awin`
+    `https://ui.awin.com/provider/merchant-settings/${MIDValue}/mobile-tracking/network/awin`,
+    `https://ui2.awin.com/adminarea/provider/membershipmanager.php`
   ];
 
   createTabs(URLs);

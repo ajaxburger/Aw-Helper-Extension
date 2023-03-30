@@ -8,42 +8,98 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     chrome.scripting.executeScript({
       target: {tabId: tabs[0].id},
       function: () => {
-        const checkScript = (scriptName) => {
+        const checkGTM = () => {
           const scripts = document.getElementsByTagName("script");
           for (let i = 0; i < scripts.length; i++) {
-            if (scripts[i].src.includes(scriptName)) {
+            if (scripts[i].src.includes("gtm.js")) {
               return true;
             }
           }
           return false;
         };
 
-        const pageSource = document.documentElement.innerHTML;
+        const checkDWIN = () => {
+          const scripts = document.getElementsByTagName("script");
+          for (let i = 0; i < scripts.length; i++) {
+            if (scripts[i].src.includes("dwin1.com")) {
+              return true;
+            }
+          }
+          return false;
+        };
 
-        var hasGtm = checkScript("gtm.js");
-        var hasShopify = checkScript("shopify.com");
-        var hasWoocommerce = pageSource.includes("woocommerce");
-        var hasDwin1 = pageSource.includes("dwin1.com");
+        const checkShopify = () => {
+          const scripts = document.getElementsByTagName("script");
+          for (let i = 0; i < scripts.length; i++) {
+            if(scripts[i].src.includes("myshopify.com")) {
+              return true;
+            }
+          }
+          return false;
+        };
 
-        const gtmPHolder = document.getElementById("gtmStatus");
-        const shopifyPHolder = document.getElementById("ShopifyStatus");
-        const woocommercePHolder = document.getElementById("WoocommerceStatus");
-        const dwin1PHolder = document.getElementById("Dwin1Status");
+        const checkWooComm = () => {
+          const scripts = document.getElementsByTagName("script");
+          for (let i = 0; i < scripts.length; i++) {
+            if(scripts[i].src.includes("woocommerce")) {
+              return true;
+            }
+          }
+          return false;
+        };
 
-        if (hasGtm) {
-            gtmPHolder.textContent = "GTM.js detected.";
-        } else { gtmPHolder.textContent = "GTM.js not detected"}
-
-        if (shopifyPHolder) {
-          shopifyPHolder.textContent = hasShopify ? "Shopify.com detected." : "shopify no ";
+        if (checkGTM()) {
+          chrome.runtime.sendMessage({status: "GTM Detected"});
         }
-        if (woocommercePHolder) {
-          woocommercePHolder.textContent = hasWoocommerce ? "Woocommerce detected." : "woo no ";
+
+        if (checkDWIN()) {
+          chrome.runtime.sendMessage({status: "Mastertag Detected"});
         }
-        if (dwin1PHolder) {
-          dwin1PHolder.textContent = hasDwin1 ? "Dwin1.com detected." : "dwin no";
+
+        if (checkShopify()) {
+          chrome.runtime.sendMessage({status: "Shopify Detected"});
+        }
+
+        if (checkWooComm()) {
+          chrome.runtime.sendMessage({status: "WooCommerce Detected"});
         }
       }
-    })
+    });
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.status === "GTM Detected") {
+    const gtmStatus = document.getElementById("gtmStatus");
+    if (gtmStatus) {
+      gtmStatus.textContent = "GTM Detected!";
+    }
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.status === "Mastertag Detected") {
+    const dwin1Status = document.getElementById("dwin1Status");
+    if (dwin1Status) {
+      dwin1Status.textContent = "MasterTag detected!";
+    }
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.status === "Shopify Detected") {
+    const dwin1Status = document.getElementById("ShopifyStatus");
+    if (dwin1Status) {
+      dwin1Status.textContent = "Shopify detected!";
+    }
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.status === "WooCommerce Detected") {
+    const dwin1Status = document.getElementById("WoocommerceStatus");
+    if (dwin1Status) {
+      dwin1Status.textContent = "WooCommerce detected!";
+    }
   }
 });
