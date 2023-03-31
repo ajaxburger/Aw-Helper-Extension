@@ -1,13 +1,18 @@
+// DO NOT CHANGE the way that this system works. I've attempted to nest these
+// functions and have not been able to get it functioning.
+
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
   const url = tabs[0].url;
 
+  // Checks to see if the URL is a chrome browser page or awin.com URL and cancels if so.
   if (url.includes("chrome://") || url.includes("awin.com")) {
     const restrictedStatus = document.getElementById("restrictedStatus");
     restrictedStatus.textContent = "Restricted URL.";
   } else {
     chrome.scripting.executeScript({
-      target: {tabId: tabs[0].id},
+      target: {tabId: tabs[0].id}, // Targets active tab
       function: () => {
+        // Checks for "gtm.js" in page <script> tags.
         const checkGTM = () => {
           const scripts = document.getElementsByTagName("script");
           for (let i = 0; i < scripts.length; i++) {
@@ -48,6 +53,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           return false;
         };
 
+        // If checkGTM function returns true, fire runtime message to pull status out of current tab.
         if (checkGTM()) {
           chrome.runtime.sendMessage({status: "GTM Detected"});
         }
@@ -68,6 +74,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
   }
 });
 
+// Listens for "GTM Detected" and adjusts popup HTML based on response.
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.status === "GTM Detected") {
     const gtmStatus = document.getElementById("gtmStatus");
