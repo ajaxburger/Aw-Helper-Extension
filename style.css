@@ -15,7 +15,6 @@ body{
 }
 
 /* Scroll Bar */
-
 ::-webkit-scrollbar {
   width: 2px;
 }
@@ -107,11 +106,48 @@ body{
   color: #424242;
 }
 
+/* Mastertag Classes */
+.mtDiv{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "a b";
+  place-items: center;
+
+  border-radius: 5px;
+  height: 40px;
+  color: white;
+  border: none;
+  background-color: #757575;
+  margin-bottom: 7px;
+}
+
+.mtPresent{
+  grid-area: a;
+  text-align: right;
+}
+
+.mtMark{
+  grid-area: b;
+  text-align: center;
+}
+
+/* Technologies / MT Classes */
+.techLegend{
+  background-color: #424242;
+  color: white;
+  text-align: left;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.techDiv{
+  font-size: 16px;
+}
+
 /* Collapse Section Dividers */
 hr.solid {
   border-top: 1px solid #FF98007a;
   border-bottom: 1px solid #FF98007a;
-
   border-right-width: 0px;
   border-left-width: 0px;
   margin-top: 5px;
@@ -119,7 +155,6 @@ hr.solid {
 }
 
 /* Collapsibles */
-
 .collapsible {
   color: white;
   background-color: #424242;
@@ -232,7 +267,6 @@ input[type="checkbox"] {
 
 input[type="text"]#opBox {
   grid-area: b;
-
   border-radius: 5px;
   width: 150px;
   height: 25px;

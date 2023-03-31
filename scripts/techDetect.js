@@ -75,6 +75,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 });
 
 // Listens for "GTM Detected" and adjusts popup HTML based on response.
+// These sections to remain modular for changes in their display type.
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.status === "GTM Detected") {
     const gtmStatus = document.getElementById("gtmStatus");
@@ -88,7 +89,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.status === "Mastertag Detected") {
     const dwin1Status = document.getElementById("dwin1Status");
     if (dwin1Status) {
-      dwin1Status.textContent = "MasterTag detected!";
+      dwin1Status.textContent = "✓";
     }
   }
 });
