@@ -2,24 +2,29 @@
  
 This extension is intended for use by Awin Staff to assist in the setup of their clients' accounts.
 
-## How to Access
+## Features
+- Quick Access to UI, Provider Area, Old Provider Area.
+- Clipboard to save MID, Commission Rate and Network Fee
+- New Implementation tab opens all required pages to set up a new client. You will need to be signed into the Awin UI and connected to the VPN for this to function completely.
+- Detection of the Mastertag and some web technologies (Google Tag Manager, Shopify, WooCommerce).
+- Generates common URL Appends.
 
-Please select the latest release from the right column to access the URLs for your browsers respective web store. You may install the development build but be warned, there may be incomplete or non-functional features.
+## How to Use
+
+Chrome Webstore - https://chrome.google.com/webstore/detail/awin-helper/ddfnphknakdknhcolehloanbkeppaomo?hl=en&authuser=0
+
+Edge Webstore - Pending Microsoft Review
 
 ## General Use Instructions
 
-To use the Awin Helper Extention, install the extension from the Google Webstore, Firefox Marketplace or Microsoft Webstore. If you wish to use your own modified version of the plugin, download this repository and install the unpackaged extension manually.
+To use the Awin Helper Extention, install the extension from the Google or Microsoft Webstore.
 
-Once installed, navigate to the desired client's tracking settings panel in the UI. Open the extension popup, select the desired appends and choose "Fill Appends". Please validate the input before saving.
-
-## Features
-- Generates desired URL Appends
-- Clipboard to save MID, Commission Rate and Network Fee
+When installed, you'll see the extension in your toolbar or in the extensions submenu. Click the icon to access.
 
 ## In-Progress Features
- - Detection of MasterTag presence
- - Detection of VPN Connection
- - Detection of in-use technologies on site (Tag Manager, eCommerce Solution, etc.)
+- More site technology compatibility.
+- Automation of the integration process (setup, appends, etc.).
+- Detection of more Awin-specific elements.
 
 ## Bug Reporting / Feature Request
 
