@@ -21,11 +21,6 @@ To use the Awin Helper Extention, install the extension from the Google or Micro
 
 When installed, you'll see the extension in your toolbar or in the extensions submenu. Click the icon to access.
 
-## In-Progress Features
-- More site technology compatibility.
-- Automation of the integration process (setup, appends, etc.).
-- Detection of more Awin-specific elements.
-
 ## Bug Reporting / Feature Request
 
 If you would like to report a bug or request a feature, please use the Issues tab to do so.
