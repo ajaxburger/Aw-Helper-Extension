@@ -55,9 +55,14 @@ body{
   grid-area: c;
 }
 
-.headVPN{
+.headAttrib{
   grid-area: a;
+  text-decoration: underline;
+  cursor: pointer;
 }
+
+/* Attribution Elements */
+
 
 /* External Buttons */
 .extButtons{
