@@ -17,4 +17,12 @@ ProvArbtn.addEventListener('click', function(){
 
 OProvArbtn.addEventListener('click', function(){
     chrome.tabs.create({ url : OPAURL });
-});    
+});
+
+// Nested controls for the Attribution Button
+const attribBtn = document.getElementById("attribText");
+var attribURL = "https://github.com/ajaxburger/Aw-Helper-Extension/wiki";
+
+attribBtn.addEventListener('click', function(){
+    chrome.tabs.create({ url : attribURL });
+});
