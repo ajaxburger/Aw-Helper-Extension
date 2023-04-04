@@ -7,7 +7,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
   // Checks to see if the URL is a chrome browser page or awin.com URL and cancels if so.
   if (url.includes("chrome://") || url.includes("awin.com") || url.includes("google.com") || url.includes("microsoftedge")) {
     const restrictedStatus = document.getElementById("restrictedStatus");
-    restrictedStatus.textContent = "Restricted URL.";
+    restrictedStatus.textContent = "Restricted URL";
   } else {
     chrome.scripting.executeScript({
       target: {tabId: tabs[0].id}, // Targets active tab
