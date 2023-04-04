@@ -29,6 +29,12 @@ body{
   background: #FF9800;
 }
 
+/* Fieldset */
+
+.field_set{
+  border-color: #424242;
+}
+
 /* Header Styling */
 .headerDiv{
   display: grid;
@@ -70,6 +76,7 @@ body{
 }
 
 .link-button:hover{
+  color: #424242;
   background-color: #FF9800;
   cursor: pointer;
 }
@@ -117,7 +124,7 @@ body{
   height: 40px;
   color: white;
   border: none;
-  background-color: #757575;
+  background-color: #424242;
   margin-bottom: 7px;
 }
 
@@ -170,6 +177,7 @@ hr.solid {
 }
 
 .active, .collapsible:hover {
+  color: #424242;
   background-color: #FF9800;
 }
 
@@ -199,8 +207,6 @@ hr.solid {
   margin-bottom: 2px;
 }
 
-/* -- Append Helper -- */
-
 /*Generate Button Properties*/
 .append-button {
   color:white;
@@ -212,16 +218,14 @@ hr.solid {
 }
 
 .append-button:hover{
+  color: #424242;
   background-color: #FF9800;
+  cursor:pointer;
 }
 
 .append-button:active{
   color:black;
   background-color:#FF9800;
-}
-
-.append-button:hover {
-  cursor:pointer;
 }
 
 /*Checkbox Grid Classes*/
