@@ -34,11 +34,6 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
             const scripts = document.getElementsByTagName("script");
             for (let i = 0; i < scripts.length; i++) {
               if (scripts[i].innerHTML.includes("AWIN.Tracking.Sale")) {
-
-                data = scripts[i].innerHTML
-
-
-
                 return true;
               }
             }
@@ -71,7 +66,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.status === "NS Detected") {
       const conversionNS = document.getElementById("conversionNS");
       if (conversionNS) {
@@ -80,7 +75,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.status.includes("AWIN.Tracking.Sale")) {
       const data = request.status
 
