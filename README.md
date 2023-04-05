@@ -13,7 +13,7 @@ This extension is intended for use by Awin Staff to assist in the setup of their
 
 Chrome Webstore - https://chrome.google.com/webstore/detail/awin-helper/ddfnphknakdknhcolehloanbkeppaomo?hl=en&authuser=0
 
-Edge Webstore - Pending Microsoft Review
+Edge Webstore - https://microsoftedge.microsoft.com/addons/detail/awin-helper/bjlmofgpijnhhaclcifnjnafjmdehncl
 
 ## General Use Instructions
 

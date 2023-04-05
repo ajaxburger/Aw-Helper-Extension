@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "version": "1.1.1",
-  "author": "Andrew Niziolek, Chris DiGrazio",
+  "author": "Andrew Niziolek",
 
   "name": "Awin Helper",
   "description": "This extension is to assist Awin Staff in generating query appends. This is a community-made extension.",

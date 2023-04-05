@@ -55,8 +55,10 @@ body{
   grid-area: c;
 }
 
-.headVPN{
+.headAttrib{
   grid-area: a;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* External Buttons */
@@ -204,6 +206,15 @@ hr.solid {
 /* -- New Impl -- */
 
 .newImplDiv {
+  margin-bottom: 2px;
+}
+
+/* -- Test URL -- */
+.testURLDiv{
+  display: grid;
+  grid-template-rows: 2;
+  gap: 4px;
+  place-items: center;
   margin-bottom: 2px;
 }
 
