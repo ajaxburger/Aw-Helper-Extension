@@ -5,4 +5,5 @@
 chrome.browserAction.onClicked.addListener(function(tab) {
     chrome.scripting.executeScript(null, {file: "/scripts/clipSaver"});
     chrome.scripting.executeScript(null, {file: "/scripts/techDetect.js"});
+    chrome.scripting.executeScript(null, {file: "/scripts/trackingDetect.js"});
 });

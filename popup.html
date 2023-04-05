@@ -52,12 +52,54 @@
 				<p id="gtmStatus"></p>
 				<p id="ShopifyStatus"></p>				
 				<p id="WoocommerceStatus"></p>
+				<p id="nativeLazyLoadingStatus"></p>
+				<p id="pluginLazyLoadingStatus"></p>
 			</div>
 		</fieldset>
 		
 		<script src="scripts/techDetect.js"></script>
 
 		<hr class="solid">
+
+		<!-- Conversion Data -->
+		<button type="button" class="collapsible">Conversion</button>
+			<div class="collapse-content">
+				<body class="upper">
+
+					<fieldset class="field_set">
+						<legend class="techLegend">Conversion Tags</legend>
+						<div class="techDiv">
+							<p id="conversionJS"></p>
+							<p id="conversionNS"></p>
+						</div>
+					</fieldset>	
+	
+				</body>
+
+				<body class="lower">
+
+					<fieldset class="field_set">
+						<legend class="techLegend">Data</legend>
+						<div class="techDiv">
+							<p id="amount"></p>
+							<p id="channel"></p>
+							<p id="currency"></p>
+							<p id="orderRef"></p>
+							<p id="parts"></p>
+							<p id="test"></p>
+							<p id="custom"></p>
+						</div>
+					</fieldset>
+
+				</body>
+
+				<hr class="solid">
+
+				</body>
+			</div>
+
+		<script src="scripts/trackingDetect.js"></script>
+		<!-- End Conversion Data -->
 
 		<!-- New Impl -->
 		<button type="button" class="collapsible">New Implementation</button>
