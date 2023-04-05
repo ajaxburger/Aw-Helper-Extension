@@ -9,6 +9,9 @@ This extension is intended for use by Awin Staff to assist in the setup of their
 - Detection of the Mastertag and some web technologies (Google Tag Manager, Shopify, WooCommerce).
 - Generates common URL Appends.
 
+## Attributions
+Please see the Wiki for information on who has contributed to the project and ideas that they have brought to the table!
+
 ## How to Use
 
 Chrome Webstore - https://chrome.google.com/webstore/detail/awin-helper/ddfnphknakdknhcolehloanbkeppaomo?hl=en&authuser=0
