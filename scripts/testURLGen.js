@@ -8,7 +8,7 @@ function createTestTabs(URL) {
     URL.forEach((url) => {
         chrome.tabs.create({ url });
     });
-}
+};
 
 URLgoBtn.addEventListener("click", () => {
     const MIDValue = testMID.value;

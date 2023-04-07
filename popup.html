@@ -23,11 +23,22 @@
 			<button type="button" class="link-button" id="UINav">UI</button>	
 			<button type="button" class="link-button" id="PANav">Prov. Area</button>	
 			<button type="button" class="link-button" id="OPANav">Old Prov. Area</button>
-			<script src="/scripts/navButton.js"></script>
 		</div>
 
 			<fieldset class="field_set">
-				<legend class="clipLegend">Clipboard</legend>
+				<legend class="legendText">Awin Wiki</legend>
+				<div class="wikiDiv">
+					<input type="text" id="wikiSearchInput" placeholder=" Search Wiki" class="clipInput">
+					<button type="button" class="append-button" id="WikiNav">Go To</button>
+				</div>
+			</fieldset>
+
+			<script src="/scripts/navButton.js"></script>
+
+		<hr class="solid">
+
+			<fieldset class="field_set">
+				<legend class="legendText">Clipboard</legend>
 				<div class="clipDiv">
 					<input type="text" id="clipMID" placeholder=" Merchant ID" class="clipInput">
 					<input type="text" id="clipCR" placeholder=" Commission Rate" class="clipInput">
@@ -46,7 +57,7 @@
 			</div>
 
 		<fieldset class="field_set">
-			<legend class="techLegend">Technologies</legend>
+			<legend class="legendText">Technologies</legend>
 			<div class="techDiv">
 				<p id="restrictedStatus"></p>
 				<p id="gtmStatus"></p>
@@ -67,7 +78,7 @@
 				<body class="upper">
 
 					<fieldset class="field_set">
-						<legend class="techLegend">Conversion Tags</legend>
+						<legend class="legendText">Conversion Tags</legend>
 						<div class="techDiv">
 							<p id="conversionJS"></p>
 							<p id="conversionNS"></p>
@@ -79,7 +90,7 @@
 				<body class="lower">
 
 					<fieldset class="field_set">
-						<legend class="techLegend">Data</legend>
+						<legend class="legendText">Data</legend>
 						<div class="techDiv">
 							<p id="amount"></p>
 							<p id="channel"></p>
