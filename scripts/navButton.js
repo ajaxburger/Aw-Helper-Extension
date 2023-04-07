@@ -26,3 +26,20 @@ var attribURL = "https://github.com/ajaxburger/Aw-Helper-Extension/wiki";
 attribBtn.addEventListener('click', function(){
     chrome.tabs.create({ url : attribURL });
 });
+
+// Controls for Wiki Search function
+const wSearchBox = document.getElementById("wikiSearchInput");
+const wSearchBtn = document.getElementById("WikiNav");
+
+function createWikiTab(URL) {
+    URL.forEach((url) => {
+        chrome.tabs.create({ url });
+    });
+};
+
+wSearchBtn.addEventListener('click', function(){
+    const searchValue = wSearchBox.value;
+    const wikiURL = [`https://wiki.awin.com/index.php/Special:Search?search=${searchValue}`];
+
+    createWikiTab(wikiURL);
+});
