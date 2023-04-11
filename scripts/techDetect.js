@@ -50,9 +50,9 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         };
 
         const checkWooComm = () => {
-          const scripts = document.getElementsByTagName("script");
-          for (let i = 0; i < scripts.length; i++) {
-            if(scripts[i].src.includes("woocommerce")) {
+          const metas = document.getElementsByTagName("meta");
+          for (let i = 0; i < metas.length; i++) {
+            if(metas[i].getAttribute("content") === "WooCommerce") {
               return true;
             }
           }
