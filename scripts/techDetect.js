@@ -93,6 +93,23 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           return false;
         };
 
+        const checkCookie = () => {
+          const cookies = document.cookie.split(";")
+          
+          // Trim leading spaces from cookies
+          // cookies = cookies.map(function (el) {
+          //   return el.trim();
+          // });
+
+          for (let i = 0; i < cookies.length; i++){
+            if (cookies[i].includes("_aw_sn")){
+              awc = cookies[i]
+              return true;
+            }
+          }
+          return false;
+        };
+
         // If checkGTM function returns true, fire runtime message to pull status out of current tab.
         if (checkGTM()) {
           chrome.runtime.sendMessage({status: "GTM Detected: " + gtmID});
@@ -117,6 +134,10 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 
         if (checkPluginLazyLoading()) {
           chrome.runtime.sendMessage({status: "Plugin Lazy Loading Detected"});
+        }
+
+        if (checkCookie()) {
+          chrome.runtime.sendMessage({status: awc});
         }
       }
     });
@@ -176,6 +197,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const dwin1Status = document.getElementById("ShopifyStatus");
     if (dwin1Status) {
       dwin1Status.textContent = "Shopify detected!";
+    }
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.status.includes("_aw_sn")) {
+    const conversionAWC = document.getElementById("conversionAWC");
+    if (conversionAWC) {
+      tooltipAWCText.textContent = request.status.split("=")[1];
+      conversionAWC.textContent = "AWC Detected";
     }
   }
 });
