@@ -1,3 +1,5 @@
+/* Commented out to temporarily remove feature.
+
 const UIbtn = document.getElementById("UINav");
 var UIURL = "https://ui.awin.com/user";
 
@@ -43,3 +45,4 @@ wSearchBtn.addEventListener('click', function(){
 
     createWikiTab(wikiURL);
 });
+*/

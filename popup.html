@@ -16,26 +16,24 @@
 		<div class="headerDiv">
 			<p class="headAttrib" id="attribText">Attrib.</p>
 			<h3 class="headText">Awin Helper</h3>
-			<p class="headVer">1.2.0</p>
+			<p class="headVer">1.5.0</p>
 		</div>
-
+		<!--
 		<div class="extButtons">
 			<button type="button" class="link-button" id="UINav">UI</button>	
 			<button type="button" class="link-button" id="PANav">Prov. Area</button>	
 			<button type="button" class="link-button" id="OPANav">Old Prov. Area</button>
 		</div>
-
+		-->
 			<fieldset class="field_set">
 				<legend class="legendText">Awin Wiki</legend>
 				<div class="wikiDiv">
 					<input type="text" id="wikiSearchInput" placeholder=" Search Wiki" class="clipInput">
-					<button type="button" class="append-button" id="WikiNav">Go To</button>
+					<button type="button" class="append-button" id="WikiNav">Search</button>
 				</div>
 			</fieldset>
 
 			<script src="/scripts/navButton.js"></script>
-
-		<hr class="solid">
 
 			<fieldset class="field_set">
 				<legend class="legendText">Clipboard</legend>
@@ -49,13 +47,6 @@
 			</fieldset>
 		<script src="/scripts/clipSaver.js"></script>
 
-		<hr class="solid">
-
-			<div class="mtDiv">
-				<p class="mtPresent">Mastertag is present:</p>
-				<p class="mtMark" id="dwin1Status">x</p>
-			</div>
-
 		<fieldset class="field_set">
 			<legend class="legendText">Technologies</legend>
 			<div class="techDiv">
@@ -64,16 +55,46 @@
 				<p id="ShopifyStatus"></p>				
 				<p id="WoocommerceStatus"></p>
 				<p id="nativeLazyLoadingStatus"></p>
-				<p id="pluginLazyLoadingStatus"></p>
-				<div id="conversionAWC" class="tooltip">
-					<span id="tooltipAWCText" class="tooltiptext"></span>
-				</div>				
+				<p id="pluginLazyLoadingStatus"></p>			
 			</div>
 		</fieldset>
+
+		<div class="mtDiv">
+			<p class="mtPresent">Mastertag is present:</p>
+			<p class="mtMark" id="dwin1Status">x</p>
+		</div>
 		
 		<script src="scripts/techDetect.js"></script>
 
 		<hr class="solid">
+
+		<!-- New Impl -->
+		<button type="button" class="collapsible">New Implementation</button>
+			<div class="collapse-content">
+				<body class="upper">
+
+					<p>Please enter the new MID and click begin.</p><p>Works best when connected to the VPN.</p>
+					<p>This will open a number of tabs, it is recommended to do this in a new Window.</p>	
+	
+				</body>
+
+				<body class="lower">
+
+					<div class="newImplDiv">
+
+					<input type="text" id="implMIDBox" placeholder=" Merchant ID" class="clipInput">
+					<button type="button" class="append-button" id="newImplBtn">Go</button>	
+
+					</div>
+
+				</body>
+
+				<hr class="solid">
+
+				</body>
+				<script src="/scripts/newImpl.js"></script>
+			</div>
+		<!-- End New Impl -->
 
 		<!-- Conversion Data -->
 		<button type="button" class="collapsible">Conversion Data</button>
@@ -115,36 +136,35 @@
 		<script src="scripts/trackingDetect.js"></script>
 		<!-- End Conversion Data -->
 
-		<!-- New Impl -->
-		<button type="button" class="collapsible">New Implementation</button>
-			<div class="collapse-content">
-				<body class="upper">
+			<!-- Test URL Gen -->
+		<button type="button" class="collapsible">Test URL Generator</button>
+		<div class="collapse-content">
+			<body class="upper">
 
-					<p>Please enter the new MID and click begin. Works best when connected to the VPN.</p>
-					<p>This will open a number of tabs, it is recommended to do this in a new Window.</p>	
-	
-				</body>
+				<p>Please enter the client's MID.</p>
 
-				<body class="lower">
+			</body>
 
-					<div class="newImplDiv">
+			<body class="lower">
 
-					<input type="text" id="implMIDBox" placeholder=" Merchant ID" class="clipInput">
-					<button type="button" class="append-button" id="newImplBtn">Go</button>	
+				<div class="testURLDiv">
 
-					</div>
+				<input type="text" id="testURLMID" placeholder=" Merchant ID" class="clipInput">
+				<button type="button" class="append-button" id="testURLBtn">Go</button>	
 
-				</body>
+				</div>
 
-				<hr class="solid">
+			</body>
 
-				</body>
-				<script src="/scripts/newImpl.js"></script>
-			</div>
-			<!-- End New Impl -->
+			<hr class="solid">
+
+			</body>
+			<script src="/scripts/testURLGen.js"></script>
+		</div>
+		<!-- End Test URL Gen -->
 
 		<!-- Append Helper -->
-		<button type="button" class="collapsible">Append Helper</button>
+		<button type="button" class="collapsible"> UTM Append Helper</button>
 			<div class="collapse-content">
 				<body class="upper">
 
@@ -190,33 +210,6 @@
 				</body>
 			</div>
 			<!-- End Append Helper -->
-
-			<!-- Test URL Gen -->
-		<button type="button" class="collapsible">Test URL Generator</button>
-		<div class="collapse-content">
-			<body class="upper">
-
-				<p>Please enter the client's MID. You may also choose to enter a unique publisher number.</p>
-
-			</body>
-
-			<body class="lower">
-
-				<div class="testURLDiv">
-
-				<input type="text" id="testURLMID" placeholder=" Merchant ID" class="clipInput">
-				<button type="button" class="append-button" id="testURLBtn">Go</button>	
-
-				</div>
-
-			</body>
-
-			<hr class="solid">
-
-			</body>
-			<script src="/scripts/testURLGen.js"></script>
-		</div>
-		<!-- End Test URL Gen -->
 
 	<script src="/scripts/collapse.js"></script>
 
