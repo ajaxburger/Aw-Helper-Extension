@@ -28,6 +28,7 @@ var attribURL = "https://github.com/ajaxburger/Aw-Helper-Extension/wiki";
 attribBtn.addEventListener('click', function(){
     chrome.tabs.create({ url : attribURL });
 });
+*/
 
 // Controls for Wiki Search function
 const wSearchBox = document.getElementById("wikiSearchInput");
@@ -45,4 +46,3 @@ wSearchBtn.addEventListener('click', function(){
 
     createWikiTab(wikiURL);
 });
-*/
