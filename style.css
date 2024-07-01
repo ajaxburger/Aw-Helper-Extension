@@ -1,32 +1,46 @@
-/* --- Color Palette ---
-  Orange 500 #FF9800, accent 
-  Gray 50 (mixed)
-*/
-
 html {
-  background-color: #212121;
+  background-color: white;
 }
 
 body{
   color: white;
   width: 300px;
   text-align: center;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Whitney SSm A","Whitney SSm B",Tahoma,sans-serif;
+
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Scroll Bar */
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 3px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #424242;
+  background: #242424;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #FF9800;
+  background: #ff7920;;
+}
+
+/* Legends */
+.legendText{
+  background-color: #5e5e5e;
+  color: white;
+  text-align: left;
+  padding-left: 3px;
+  padding-right: 3px;
+
+}
+
+/* Fieldset */
+.field_set{
+  border-color: #5e5e5e;
+  margin-top: 5px;
+  border-radius: 3px;
 }
 
 /* Header Styling */
@@ -34,11 +48,14 @@ body{
   display: grid;
   grid-template-columns: .15fr 1fr .15fr;
   grid-template-areas: "a b c";
-  background: #fb8a00c7;
+  background: #ff7920;
   justify-content: center;
   align-items: center;
   height: 2.5rem;
   padding: 0 1.5rem;
+  margin-bottom: 5px;
+
+  border-radius: 5px;
 }
 
 .headText{
@@ -49,8 +66,10 @@ body{
   grid-area: c;
 }
 
-.headVPN{
+.headAttrib{
   grid-area: a;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* External Buttons */
@@ -65,24 +84,26 @@ body{
 .link-button {
   color: white;
   border: none;
-  background-color: #424242;
+  background-color: #5e5e5e;
   transition: 0.2s;
 }
 
 .link-button:hover{
-  background-color: #FF9800;
+  color: #5e5e5e;
+  background-color: #ff7920;
   cursor: pointer;
 }
 
-/* Clipboard Classes */
-.clipLegend{
-  background-color: #424242;
-  color: white;
-  text-align: left;
-  padding-left: 3px;
-  padding-right: 3px;
+/* Wiki Classes */
+.wikiDiv{
+  display: grid;
+  grid-template-columns: 1fr 0.3fr;
+  gap: 3px;
+
+  margin: 3px 0px 0px 0px;
 }
 
+/* Clipboard Classes */
 .clipDiv{
   display: grid;
   grid-template-columns: 1fr;
@@ -98,12 +119,12 @@ body{
   height: 25px;
   color: white;
   border: none;
-  background-color: #757575;
+  background-color: #777;
   text-align: left;
 }
 
 .clipInput::placeholder{
-  color: #424242;
+  color: #c7c7c7;
 }
 
 /* Mastertag Classes */
@@ -117,8 +138,8 @@ body{
   height: 40px;
   color: white;
   border: none;
-  background-color: #757575;
-  margin-bottom: 7px;
+  background-color: #5e5e5e;
+  margin-top: 3px;
 }
 
 .mtPresent{
@@ -132,45 +153,45 @@ body{
 }
 
 /* Technologies / MT Classes */
-.techLegend{
-  background-color: #424242;
-  color: white;
-  text-align: left;
-  padding-left: 3px;
-  padding-right: 3px;
-}
-
 .techDiv{
+  color: #242424;
+  vertical-align: middle;
+  text-align: center;
+
   font-size: 16px;
 }
 
 /* Collapse Section Dividers */
 hr.solid {
-  border-top: 1px solid #FF98007a;
-  border-bottom: 1px solid #FF98007a;
+  border-top: 1px solid #ff79207a;
+  border-bottom: 1px solid #ff79207a;
   border-right-width: 0px;
   border-left-width: 0px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 /* Collapsibles */
 .collapsible {
   color: white;
-  background-color: #424242;
+  background-color: #5e5e5e;
   cursor: pointer;
   padding: 18px;
   width: 100%;
   border: none;
+  vertical-align: middle;
   text-align: left;
   outline: none;
   font-size: 14px;
   transition: 0.2s;
   margin-bottom: 3px;
+  border-radius: 5px;
 }
 
 .active, .collapsible:hover {
-  background-color: #FF9800;
+  color: #242424;
+  background-color: #ff7920;
+
 }
 
 .collapsible:after {
@@ -187,24 +208,32 @@ hr.solid {
 }
 
 .collapse-content {
+  color: #242424;
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
+
   transition: max-height 0.2s ease-out;
 }
 
 /* -- New Impl -- */
-
 .newImplDiv {
   margin-bottom: 2px;
 }
 
-/* -- Append Helper -- */
+/* -- Test URL -- */
+.testURLDiv{
+  display: grid;
+  grid-template-rows: 2;
+  gap: 4px;
+  place-items: center;
+  margin-bottom: 2px;
+}
 
 /*Generate Button Properties*/
 .append-button {
-  color:white;
-  background-color:#424242;
+  color: #424242;
+  background-color:white;
   border: 1.9px solid #424242;
   border-radius: 25px;
   margin: 5px;
@@ -212,21 +241,19 @@ hr.solid {
 }
 
 .append-button:hover{
-  background-color: #FF9800;
+  color: #424242;
+  background-color: #ff7920;
+  cursor:pointer;
 }
 
 .append-button:active{
   color:black;
-  background-color:#FF9800;
-}
-
-.append-button:hover {
-  cursor:pointer;
+  background-color:#ffad77;
 }
 
 /*Checkbox Grid Classes*/
 .optionContainer {
-	background-color: #424242;
+	background-color: #5e5e5e;
 	display: grid;
 	grid-template-columns: 1fr .35fr;
 	margin: 10px;
@@ -237,12 +264,13 @@ hr.solid {
 }
 
 .opttext {
-  border-left: 2px solid #FF9800;
+  color: white;
+  border-left: 2px solid #ff7920;
   padding-left: 15px;
 }
 
 input[type="checkbox"] {
-	accent-color:#FF9800;
+	accent-color:#ff7920;
 	width: 1.3em;
   cursor: pointer;
 }
@@ -278,5 +306,54 @@ input[type="text"]#opBox {
 
 .reset-icon{
   grid-area: c;
-  fill: white;
+  fill: #242424;
 }
+
+/* Added by Drew */
+
+ /* Tooltip container */
+ .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+} 

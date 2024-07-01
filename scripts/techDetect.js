@@ -5,9 +5,9 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
   const url = tabs[0].url;
 
   // Checks to see if the URL is a chrome browser page or awin.com URL and cancels if so.
-  if (url.includes("chrome://") || url.includes("awin.com")) {
+  if (url.includes("chrome://") || url.includes("awin.com") || url.includes("google.com") || url.includes("microsoftedge")) {
     const restrictedStatus = document.getElementById("restrictedStatus");
-    restrictedStatus.textContent = "Restricted URL.";
+    restrictedStatus.textContent = "Restricted URL";
   } else {
     chrome.scripting.executeScript({
       target: {tabId: tabs[0].id}, // Targets active tab
@@ -15,8 +15,12 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         // Checks for "gtm.js" in page <script> tags.
         const checkGTM = () => {
           const scripts = document.getElementsByTagName("script");
+          gtmID = "";
           for (let i = 0; i < scripts.length; i++) {
             if (scripts[i].src.includes("gtm.js")) {
+              // Outputs the GTM IDs - working on detecting multiple
+              //gtmID = gtmID + scripts[i].src.slice(-11);
+              gtmID = scripts[i].src.slice(-11);
               return true;
             }
           }
@@ -27,6 +31,8 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           const scripts = document.getElementsByTagName("script");
           for (let i = 0; i < scripts.length; i++) {
             if (scripts[i].src.includes("dwin1.com")) {
+              const regex = /[^/]*$/gm;
+              awinID = regex.exec(scripts[i].src)
               return true;
             }
           }
@@ -53,21 +59,85 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           return false;
         };
 
+        const checkNativeLazyLoading = () => {
+          const images = document.getElementsByTagName("img");
+          for (let i = 0; i < images.length; i++) {
+        
+            if ((images[i].loading == "lazy"))
+            {
+                return true;
+            }
+          }
+          return false;
+        };
+
+        const checkPluginLazyLoading = () => {
+          const images = document.getElementsByTagName("img");
+          for (let i = 0; i < images.length; i++) {
+            if ((images[i].className.includes("lazyloaded")) || (images[i].loading == "lazyloaded") || (images[i].className.includes("lazyload")) || (images[i].className.includes("lazyload")))
+              {
+                  return true;
+              }
+          }
+          // Detect WP Rocket - Lazy loading
+          if (document.getElementsByClassName("rocket-lazyload").length >= 1)
+          {
+            return true;
+          }
+          
+          // Detect W3 Total Cache - Lazy Loading
+          if (document.body.innerHTML.search("W3 Total Cache") > 1)
+          {
+            return true;
+          }
+          return false;
+        };
+
+        const checkCookie = () => {
+          const cookies = document.cookie.split(";")
+          
+          // Trim leading spaces from cookies
+          // cookies = cookies.map(function (el) {
+          //   return el.trim();
+          // });
+
+          for (let i = 0; i < cookies.length; i++){
+            if (cookies[i].includes("_aw_sn")){
+              awc = cookies[i]
+              return true;
+            }
+          }
+          return false;
+        };
+
         // If checkGTM function returns true, fire runtime message to pull status out of current tab.
         if (checkGTM()) {
-          chrome.runtime.sendMessage({status: "GTM Detected"});
+          chrome.runtime.sendMessage({status: "GTM Detected: " + gtmID});
         }
 
         if (checkDWIN()) {
-          chrome.runtime.sendMessage({status: "Mastertag Detected"});
+          chrome.runtime.sendMessage({status: "Mastertag Detected: " + awinID});
         }
 
         if (checkShopify()) {
           chrome.runtime.sendMessage({status: "Shopify Detected"});
+          console.log("here")
         }
 
         if (checkWooComm()) {
           chrome.runtime.sendMessage({status: "WooCommerce Detected"});
+        }
+
+        if (checkNativeLazyLoading()) {
+          chrome.runtime.sendMessage({status: "Native Wordpress Lazy Loading Detected"});
+        }
+
+        if (checkPluginLazyLoading()) {
+          chrome.runtime.sendMessage({status: "Plugin Lazy Loading Detected"});
+        }
+
+        if (checkCookie()) {
+          chrome.runtime.sendMessage({status: awc});
         }
       }
     });
@@ -77,19 +147,47 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 // Listens for "GTM Detected" and adjusts popup HTML based on response.
 // These sections to remain modular for changes in their display type.
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.status === "GTM Detected") {
+  if (request.status.includes("GTM")) {
     const gtmStatus = document.getElementById("gtmStatus");
     if (gtmStatus) {
-      gtmStatus.textContent = "GTM Detected!";
+      gtmStatus.textContent = request.status;
     }
   }
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.status === "Mastertag Detected") {
-    const dwin1Status = document.getElementById("dwin1Status");
+  if (request.status === "WooCommerce") {
+    const dwin1Status = document.getElementById("WoocommerceStatus");
     if (dwin1Status) {
-      dwin1Status.textContent = "✓";
+      dwin1Status.textContent = "WooCommerce detected!";
+    }
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.status === "Native Wordpress Lazy Loading Detected") {
+    const status = document.getElementById("nativeLazyLoadingStatus");
+    if (status) {
+      status.textContent = "Native Wordpress Lazy Loading";
+    }
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.status === "Plugin Lazy Loading Detected") {
+    const status = document.getElementById("pluginLazyLoadingStatus");
+    if (status) {
+      status.textContent = "Plugin Wordpress Lazy Loading";
+    }
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.status.includes("Mastertag")) {
+    const dwin1Status = document.getElementById("dwin1Status");
+    const sregex = /\d+/;
+    if (dwin1Status) {
+      dwin1Status.textContent = sregex.exec(request.status);
     }
   }
 });
@@ -104,10 +202,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.status === "WooCommerce Detected") {
-    const dwin1Status = document.getElementById("WoocommerceStatus");
-    if (dwin1Status) {
-      dwin1Status.textContent = "WooCommerce detected!";
+  if (request.status.includes("_aw_sn")) {
+    const conversionAWC = document.getElementById("conversionAWC");
+    if (conversionAWC) {
+      tooltipAWCText.textContent = request.status.split("=")[1];
+      conversionAWC.textContent = "AWC Detected";
     }
   }
 });

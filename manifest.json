@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "version": "1.1.0",
-  "author": "Andrew Niziolek, Chris DiGrazio",
+  "version": "1.5.0",
+  "author": "Andrew Niziolek",
 
   "name": "Awin Helper",
-  "description": "This extension is to assist Awin Staff in generating query appends. This is a community-made extension.",
+  "description": "This extension is to assist Awin Staff in their daily activities. This is a community made extension.",
 
   "icons": {
     "16": "assets/icon16.png",
@@ -25,5 +25,4 @@
     "http://*/",
     "https://*/"
   ]
-
 }

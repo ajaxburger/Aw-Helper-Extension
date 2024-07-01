@@ -14,19 +14,29 @@
 
 	<body class="mainBody">
 		<div class="headerDiv">
+			<p class="headAttrib" id="attribText">Attrib.</p>
 			<h3 class="headText">Awin Helper</h3>
-			<p class="headVer">1.1.0</p>
+			<p class="headVer">1.5.0</p>
 		</div>
-
+		<!--
 		<div class="extButtons">
 			<button type="button" class="link-button" id="UINav">UI</button>	
 			<button type="button" class="link-button" id="PANav">Prov. Area</button>	
 			<button type="button" class="link-button" id="OPANav">Old Prov. Area</button>
-			<script src="/scripts/navButton.js"></script>
 		</div>
+		-->
+			<fieldset class="field_set">
+				<legend class="legendText">Awin Wiki</legend>
+				<div class="wikiDiv">
+					<input type="text" id="wikiSearchInput" placeholder=" Search Wiki" class="clipInput">
+					<button type="button" class="append-button" id="WikiNav">Search</button>
+				</div>
+			</fieldset>
 
-			<fieldset>
-				<legend class="clipLegend">Clipboard</legend>
+			<script src="/scripts/navButton.js"></script>
+
+			<fieldset class="field_set">
+				<legend class="legendText">Clipboard</legend>
 				<div class="clipDiv">
 					<input type="text" id="clipMID" placeholder=" Merchant ID" class="clipInput">
 					<input type="text" id="clipCR" placeholder=" Commission Rate" class="clipInput">
@@ -37,22 +47,22 @@
 			</fieldset>
 		<script src="/scripts/clipSaver.js"></script>
 
-		<hr class="solid">
-
-			<div class="mtDiv">
-				<p class="mtPresent">Mastertag is present:</p>
-				<p class="mtMark" id="dwin1Status">x</p>
-			</div>
-
-		<fieldset>
-			<legend class="techLegend">Technologies</legend>
+		<fieldset class="field_set">
+			<legend class="legendText">Technologies</legend>
 			<div class="techDiv">
 				<p id="restrictedStatus"></p>
 				<p id="gtmStatus"></p>
 				<p id="ShopifyStatus"></p>				
 				<p id="WoocommerceStatus"></p>
+				<p id="nativeLazyLoadingStatus"></p>
+				<p id="pluginLazyLoadingStatus"></p>			
 			</div>
 		</fieldset>
+
+		<div class="mtDiv">
+			<p class="mtPresent">Mastertag is present:</p>
+			<p class="mtMark" id="dwin1Status">x</p>
+		</div>
 		
 		<script src="scripts/techDetect.js"></script>
 
@@ -63,7 +73,7 @@
 			<div class="collapse-content">
 				<body class="upper">
 
-					<p>Please enter the new MID and click begin. Works best when connected to the VPN.</p>
+					<p>Please enter the new MID and click begin.</p><p>Works best when connected to the VPN.</p>
 					<p>This will open a number of tabs, it is recommended to do this in a new Window.</p>	
 	
 				</body>
@@ -84,10 +94,77 @@
 				</body>
 				<script src="/scripts/newImpl.js"></script>
 			</div>
-			<!-- End New Impl -->
+		<!-- End New Impl -->
+
+		<!-- Conversion Data -->
+		<button type="button" class="collapsible">Conversion Data</button>
+			<div class="collapse-content">
+				<body class="upper">
+
+					<fieldset class="field_set">
+						<legend class="legendText">Conversion Tags</legend>
+						<div class="techDiv">
+							<p id="conversionJS"></p>
+							<p id="conversionNS"></p>
+						</div>
+					</fieldset>	
+	
+				</body>
+
+				<body class="lower">
+
+					<fieldset class="field_set">
+						<legend class="legendText">Data</legend>
+						<div class="techDiv">
+							<p id="amount"></p>
+							<p id="channel"></p>
+							<p id="currency"></p>
+							<p id="orderRef"></p>
+							<p id="parts"></p>
+							<p id="test"></p>
+							<p id="custom"></p>
+						</div>
+					</fieldset>
+
+				</body>
+
+				<hr class="solid">
+
+				</body>
+			</div>
+
+		<script src="scripts/trackingDetect.js"></script>
+		<!-- End Conversion Data -->
+
+			<!-- Test URL Gen -->
+		<button type="button" class="collapsible">Test URL Generator</button>
+		<div class="collapse-content">
+			<body class="upper">
+
+				<p>Please enter the client's MID.</p>
+
+			</body>
+
+			<body class="lower">
+
+				<div class="testURLDiv">
+
+				<input type="text" id="testURLMID" placeholder=" Merchant ID" class="clipInput">
+				<button type="button" class="append-button" id="testURLBtn">Go</button>	
+
+				</div>
+
+			</body>
+
+			<hr class="solid">
+
+			</body>
+			<script src="/scripts/testURLGen.js"></script>
+		</div>
+		<!-- End Test URL Gen -->
 
 		<!-- Append Helper -->
-		<button type="button" class="collapsible">Append Helper</button>
+		<button type="button" class="collapsible"> UTM Append Helper</button>
 			<div class="collapse-content">
 				<body class="upper">
 
@@ -135,6 +212,7 @@
 			<!-- End Append Helper -->
 
 	<script src="/scripts/collapse.js"></script>
+	<script src="/scripts/enterToGo.js"></script>
 
 	</body>
 

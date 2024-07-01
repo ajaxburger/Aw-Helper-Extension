@@ -1,3 +1,5 @@
+/* Commented out to temporarily remove feature.
+
 const UIbtn = document.getElementById("UINav");
 var UIURL = "https://ui.awin.com/user";
 
@@ -17,4 +19,30 @@ ProvArbtn.addEventListener('click', function(){
 
 OProvArbtn.addEventListener('click', function(){
     chrome.tabs.create({ url : OPAURL });
-});    
+});
+
+// Nested controls for the Attribution Button
+const attribBtn = document.getElementById("attribText");
+var attribURL = "https://github.com/ajaxburger/Aw-Helper-Extension/wiki";
+
+attribBtn.addEventListener('click', function(){
+    chrome.tabs.create({ url : attribURL });
+});
+*/
+
+// Controls for Wiki Search function
+const wSearchBox = document.getElementById("wikiSearchInput");
+const wSearchBtn = document.getElementById("WikiNav");
+
+function createWikiTab(URL) {
+    URL.forEach((url) => {
+        chrome.tabs.create({ url });
+    });
+};
+
+wSearchBtn.addEventListener('click', function(){
+    const searchValue = wSearchBox.value;
+    const wikiURL = [`https://wiki.awin.com/index.php/Special:Search?search=${searchValue}`];
+
+    createWikiTab(wikiURL);
+});
