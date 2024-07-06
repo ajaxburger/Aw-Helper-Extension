@@ -28,8 +28,19 @@ body{
   background: #ff7920;;
 }
 
-.mainBody{
+.simpleBody{
   display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 0.25fr 1fr; 
+  gap: 5px 5px; 
+  grid-template-areas: 
+    "header header"
+    "body body";
+  width: 97%;
+}
+
+.techBody{
+  display: none; 
   grid-template-columns: 1fr 1fr; 
   grid-template-rows: 0.25fr 1fr; 
   gap: 5px 5px; 
