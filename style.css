@@ -8,7 +8,7 @@ body{
   color: white;
   width: 100%;
   text-align: center;
-  font-family: "Whitney SSm A","Whitney SSm B",Tahoma,sans-serif;
+  font-family: "Whitney SSm A","Whitney SSm B",sans-serif;
 
   -webkit-font-smoothing: antialiased;
 }
@@ -25,7 +25,7 @@ body{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ff7920;;
+  background: var(--orange);;
 }
 
 .headerContainer {
@@ -38,7 +38,7 @@ body{
   display: grid;
   grid-template-columns: .15fr .15fr 1fr .15fr .15fr;
   grid-template-areas: "head-a1 head-a head-b head-c head-d";
-  background: #ff7920;
+  background: var(--orange);
   justify-content: center;
   height: 2.5rem;
   padding: 0 1.5rem;
@@ -47,8 +47,9 @@ body{
 }
 
 .headAttrib{
-  grid-area: head-a;
-  text-decoration: underline;
+  grid-area: head-c;
+  padding-top: 8px;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -56,14 +57,17 @@ body{
   grid-area: head-b;
   position: relative;
   bottom: 3px;
+  font-size: 14px;
 }
 
 .headVer{
-  grid-area: head-a1;
+  grid-area: head-d;
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .headAdv{
-  grid-area: head-c;
+  grid-area: head-a1;
   position: relative;
   bottom: 7px;
 }
@@ -75,7 +79,7 @@ body{
 
 /* The headModeSwitch - the box around the slider */
 .headModeSwitch {
-  grid-area: head-d;
+  grid-area: head-a;
   position: relative;
   display: inline-block;
   margin-top: 5px;
@@ -116,11 +120,11 @@ body{
 }
 
 input:checked + .slider {
-  background-color: #4CD964;
+  background-color: #e35b00;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #4CD964;
+  box-shadow: 0 0 1px #e35b00;
 }
 
 input:checked + .slider:before {
@@ -159,13 +163,14 @@ input:checked + .slider:before {
   background-color: #5e5e5e;
   color: white;
   text-align: left;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding-left: 4px;
+  padding-right: 5px;
+  border-radius: 3px;
 }
 
 /* Fieldset */
 .field_set{
-  border-color: #5e5e5e;
+  border: 2px solid #e0e0e0;
   margin-top: 5px;
   border-radius: 3px;
 }
@@ -202,28 +207,6 @@ input:checked + .slider:before {
   margin-top: 3px;
 }
 
-.mtPresent{
-  grid-area: a;
-  text-align: right;
-}
-
-.mtMark{
-  grid-area: b;
-  text-align: center;
-}
-
-.techDisplay{
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-
-  border-radius: 5px;
-  height: 80px;
-  color: black;
-  border: none;
-  background-color: #ffffff;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
-}
-
 /* Clipboard Classes */
 .clipDiv{
   display: grid;
@@ -238,29 +221,45 @@ input:checked + .slider:before {
   border-radius: 5px;
 
   height: 25px;
-  color: white;
-  border: none;
-  background-color: #777;
+  color: #444;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
   text-align: left;
+  padding-left: 10px;
 }
 
 .clipInput::placeholder{
-  color: #c7c7c7;
+  color: #444;
 }
 
-/* Technologies / MT Classes */
-.techDiv{
-  color: #242424;
-  vertical-align: middle;
-  text-align: center;
+.mtPresent{
+  grid-area: a;
+  text-align: right;
+}
 
-  font-size: 16px;
+.mtMark{
+  grid-area: b;
+  text-align: center;
+}
+
+.techDisplay{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  border-radius: 5px;
+  height: 80px;
+  color: black;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
+}
+
+.gtmStatus{
+  
 }
 
 /* Collapse Section Dividers */
 hr.solid {
-  border-top: 1px solid #ff79207a;
-  border-bottom: 1px solid #ff79207a;
+  border-bottom: 1px solid #e0e0e0;
   border-right-width: 0px;
   border-left-width: 0px;
   margin-top: 4px;
@@ -269,10 +268,11 @@ hr.solid {
 
 /* Collapsibles */
 .collapsible {
-  color: white;
-  background-color: #5e5e5e;
+  color: black;
+  background-color: #dfdfdf;
   cursor: pointer;
-  padding: 18px;
+  padding-left: 18px;
+  height: 40px;
   width: 100%;
   border: none;
   vertical-align: middle;
@@ -280,19 +280,20 @@ hr.solid {
   outline: none;
   font-size: 14px;
   transition: 0.2s;
+  margin-top: 3px;
   margin-bottom: 3px;
   border-radius: 5px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
 }
 
 .active, .collapsible:hover {
-  color: #242424;
-  background-color: #ff7920;
-
+  color: white;
+  background-color: var(--dark-orange);
 }
 
 .collapsible:after {
   color: transparent;
-  text-shadow: 0 0 0 white;
+  text-shadow: 0 0 0 #5e5e5e;
   content: '\02795'; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
   float: right;
@@ -304,12 +305,10 @@ hr.solid {
 }
 
 .collapse-content {
-  color: #242424;
-  padding: 0 18px;
+  color: black;
   max-height: 0;
   overflow: hidden;
-
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.1s ease-out;
 }
 
 /* -- New Impl -- */
@@ -323,14 +322,15 @@ hr.solid {
   grid-template-rows: 2;
   gap: 4px;
   place-items: center;
+  margin-top: 5px;
   margin-bottom: 2px;
 }
 
 /*Generate Button Properties*/
 .append-button {
-  color: #424242;
+  color: var(--high-orange);
   background-color:white;
-  border: 1.9px solid #424242;
+  border: 1.9px solid var(--high-orange);
   border-radius: 25px;
   margin: 5px;
   transition: 0.2s;
@@ -338,13 +338,14 @@ hr.solid {
 
 .append-button:hover{
   color: #424242;
-  background-color: #ff7920;
+  background-color: var(--orange);
+  border: 1.9px solid var(--orange);
   cursor:pointer;
 }
 
 .append-button:active{
   color:black;
-  background-color:#ffad77;
+  background-color:var(--light-orange);
 }
 
 /*Checkbox Grid Classes*/
@@ -361,12 +362,12 @@ hr.solid {
 
 .opttext {
   color: white;
-  border-left: 2px solid #ff7920;
+  border-left: 2px solid var(--orange);
   padding-left: 15px;
 }
 
 input[type="checkbox"] {
-	accent-color:#ff7920;
+	accent-color:var(--orange);
 	width: 1.3em;
   cursor: pointer;
 }
@@ -450,4 +451,13 @@ input[type="text"]#opBox {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
-} 
+}
+
+:root{
+  --light-orange: #ffad77;
+  --orange: #fc8e45;
+  --high-orange: #ff6600;
+  --dark-orange: #fc8e45;
+  --light-gray: #e0e0e0;
+  --dark-gray: #242424;
+}

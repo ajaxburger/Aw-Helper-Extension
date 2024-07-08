@@ -1,6 +1,21 @@
+// Attribution Link Function
+const attriBtn = document.getElementById("attribText");
+
+//Open link tab
+function openGitURL(URL) {
+  URL.forEach((url) => {
+      chrome.tabs.create({ url });
+  });
+};
+
+attriBtn.addEventListener("click", function(){
+  const URL = [`https://github.com/ajaxburger/Aw-Helper-Extension/wiki/Extension-Attributions`];
+
+  openGitURL(URL);
+});
+
 // DO NOT CHANGE the way that this system works. I've attempted to nest these
 // functions and have not been able to get it functioning.
-
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     const url = tabs[0].url;
   
