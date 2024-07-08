@@ -27,18 +27,6 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           return false;
         };
 
-        const checkDWIN = () => {
-          const scripts = document.getElementsByTagName("script");
-          for (let i = 0; i < scripts.length; i++) {
-            if (scripts[i].src.includes("dwin1.com")) {
-              const regex = /[^/]*$/gm;
-              awinID = regex.exec(scripts[i].src)
-              return true;
-            }
-          }
-          return false;
-        };
-
         const checkShopify = () => {
           const scripts = document.getElementsByTagName("script");
           for (let i = 0; i < scripts.length; i++) {
@@ -115,13 +103,8 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           chrome.runtime.sendMessage({status: "GTM Detected: " + gtmID});
         }
 
-        if (checkDWIN()) {
-          chrome.runtime.sendMessage({status: "Mastertag Detected: " + awinID});
-        }
-
         if (checkShopify()) {
           chrome.runtime.sendMessage({status: "Shopify Detected"});
-          console.log("here")
         }
 
         if (checkWooComm()) {
@@ -155,11 +138,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
+// Needs fixing.
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.status === "WooCommerce") {
-    const dwin1Status = document.getElementById("WoocommerceStatus");
-    if (dwin1Status) {
-      dwin1Status.textContent = "WooCommerce detected!";
+  if (request.status === "WooCommerce Detected") {
+    const wooStatus = document.getElementById("WoocommerceStatus");
+    if (wooStatus) {
+      wooStatus.textContent = "WooCommerce detected!";
     }
   }
 });
@@ -178,16 +162,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const status = document.getElementById("pluginLazyLoadingStatus");
     if (status) {
       status.textContent = "Plugin Wordpress Lazy Loading";
-    }
-  }
-});
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.status.includes("Mastertag")) {
-    const dwin1Status = document.getElementById("dwin1Status");
-    const sregex = /\d+/;
-    if (dwin1Status) {
-      dwin1Status.textContent = sregex.exec(request.status);
     }
   }
 });

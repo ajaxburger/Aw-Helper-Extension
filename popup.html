@@ -12,31 +12,43 @@
 		<title>Awin Helper</title>
 	</head>
 
-	<body class="simpleBody">
-		<div class="headerDiv">
-			<p class="headAttrib" id="attribText">Attrib.</p>
-			<h3 class="headText">Awin Helper</h3>
-			<p class="headVer">2.0</p>
-			<p class="headAdv">Tech Mode</p>
-			<label class="headModeSwitch">
-				<input type="checkbox">
-				<span class="slider round"></span>
-			  </label>
+	<body>
+
+		<div class="headerContainer">
+			<div class="headerDiv">
+				<p class="headAttrib" id="attribText">Attrib.</p>
+				<h3 class="headText">Awin Helper</h3>
+				<p class="headVer">2.0</p>
+				<p class="headAdv">Tech Mode</p>
+				<label class="headModeSwitch">
+					<input type="checkbox" id="modeSwitch">
+					<span class="slider round"></span>
+				  </label>
+			</div>
 		</div>
+		<div class="extBody">
+			<div class="leftContainer">
+				<div class="siteInfoDiv">
+					<p class="siteURL" id="siteURLText"></p>
+					<div class="mtDiv">
+						<p class="mtPresent">Mastertag is present:</p>
+						<p class="mtMark" id="dwin1Status">x</p>
+					</div>
+				</div>
+
+				<script src="scripts/URLandMT.js"></script>
+			</div>
+	
+			<div class="rightContainer">
+				<div class="techDisplay" id="GTMDialog">
+				</div>
+			</div>
+		</div>
+
 	</body>
 
-	<body class="techBody">
-		<div class="headerDiv">
-			<p class="headAttrib" id="attribText">Attrib.</p>
-			<h3 class="headText">Awin Helper</h3>
-			<p class="headVer">2.0</p>
-			<p class="headAdv">Tech Mode</p>
-			<label class="headModeSwitch">
-				<input type="checkbox">
-				<span class="slider round"></span>
-			  </label>
-		</div>
-
+	<script src="scripts/modeSelect.js"></script>
+<!--
 			<fieldset class="field_set">
 				<legend class="legendText">Clipboard</legend>
 				<div class="clipDiv">
@@ -70,7 +82,6 @@
 
 		<hr class="solid">
 
-		<!-- New Impl -->
 		<button type="button" class="collapsible">New Implementation</button>
 			<div class="collapse-content">
 				<body class="upper">
@@ -93,12 +104,9 @@
 
 				<hr class="solid">
 
-				</body>
 				<script src="/scripts/newImpl.js"></script>
 			</div>
-		<!-- End New Impl -->
 
-		<!-- Conversion Data -->
 		<button type="button" class="collapsible">Conversion Data</button>
 			<div class="collapse-content">
 				<body class="upper">
@@ -136,9 +144,7 @@
 			</div>
 
 		<script src="scripts/trackingDetect.js"></script>
-		<!-- End Conversion Data -->
 
-			<!-- Test URL Gen -->
 		<button type="button" class="collapsible">Test URL Generator</button>
 		<div class="collapse-content">
 			<body class="upper">
@@ -163,9 +169,7 @@
 			</body>
 			<script src="/scripts/testURLGen.js"></script>
 		</div>
-		<!-- End Test URL Gen -->
 
-		<!-- Append Helper -->
 		<button type="button" class="collapsible"> UTM Append Helper</button>
 			<div class="collapse-content">
 				<body class="upper">
@@ -211,12 +215,11 @@
 				<script src="/scripts/appendHelper.js"></script>
 				</body>
 			</div>
-			<!-- End Append Helper -->
 
 	<script src="/scripts/collapse.js"></script>
 	<script src="/scripts/enterToGo.js"></script>
+	-->
 
-	</body>
 
 </html>
 

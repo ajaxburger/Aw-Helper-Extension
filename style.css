@@ -28,43 +28,8 @@ body{
   background: #ff7920;;
 }
 
-.simpleBody{
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 0.25fr 1fr; 
-  gap: 5px 5px; 
-  grid-template-areas: 
-    "header header"
-    "body body";
-  width: 97%;
-}
-
-.techBody{
-  display: none; 
-  grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 0.25fr 1fr; 
-  gap: 5px 5px; 
-  grid-template-areas: 
-    "header header"
-    "body body";
-  width: 97%;
-}
-
-/* Legends */
-.legendText{
-  background-color: #5e5e5e;
-  color: white;
-  text-align: left;
-  padding-left: 3px;
-  padding-right: 3px;
-
-}
-
-/* Fieldset */
-.field_set{
-  border-color: #5e5e5e;
-  margin-top: 5px;
-  border-radius: 3px;
+.headerContainer {
+  max-width: 97%;
 }
 
 /* Header Styling */
@@ -172,28 +137,54 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/* Clipboard Classes */
-.clipDiv{
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr .5fr;
-  gap: 4px;
-
-  margin: 3px 0px 3px 0px;
+.extBody{
+  display: grid; 
+  grid-auto-flow: column; 
+  grid-auto-rows: 1fr; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 0px 10px;
+  max-width: 97%; 
 }
 
-.clipInput{
-  border-radius: 5px;
+.leftContainer{
+  grid-area: 1 / 1 / 2 / 2;
+}
 
-  height: 25px;
+.rightContainer{
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+/* Legends */
+.legendText{
+  background-color: #5e5e5e;
   color: white;
-  border: none;
-  background-color: #777;
   text-align: left;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
-.clipInput::placeholder{
-  color: #c7c7c7;
+/* Fieldset */
+.field_set{
+  border-color: #5e5e5e;
+  margin-top: 5px;
+  border-radius: 3px;
+}
+
+.siteInfoDiv{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+
+  border-radius: 5px;
+  height: 80px;
+  color: black;
+  border: none;
+  background-color: #dfdfdf;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
+}
+
+.siteURL{
+  font-size: 100%;
+  font-style: italic;
 }
 
 /* Mastertag Classes */
@@ -219,6 +210,42 @@ input:checked + .slider:before {
 .mtMark{
   grid-area: b;
   text-align: center;
+}
+
+.techDisplay{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+
+  border-radius: 5px;
+  height: 80px;
+  color: black;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
+}
+
+/* Clipboard Classes */
+.clipDiv{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr .5fr;
+  gap: 4px;
+
+  margin: 3px 0px 3px 0px;
+}
+
+.clipInput{
+  border-radius: 5px;
+
+  height: 25px;
+  color: white;
+  border: none;
+  background-color: #777;
+  text-align: left;
+}
+
+.clipInput::placeholder{
+  color: #c7c7c7;
 }
 
 /* Technologies / MT Classes */
@@ -378,9 +405,7 @@ input[type="text"]#opBox {
   fill: #242424;
 }
 
-/* Added by Drew */
-
- /* Tooltip container */
+/* Drew's Tooltip Container */
  .tooltip {
   position: relative;
   display: inline-block;
