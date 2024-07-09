@@ -1,9 +1,8 @@
 // All background functions that need to run throughout the extension.
 
-// On click, run these scripts.
-chrome.browserAction.onClicked.addListener(function(tab) {
-    chrome.scripting.executeScript(null, {file: "/scripts/modeSelect.js"});
-    chrome.scripting.executeScript(null, {file: "/scripts/clipSaver.js"});
-    chrome.scripting.executeScript(null, {file: "/scripts/techDetect.js"});
-    chrome.scripting.executeScript(null, {file: "/scripts/trackingDetect.js"});
-});
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.techCount !== undefined) {
+      chrome.action.setBadgeText({text: request.techCount.toString(), tabId: sender.tab.id});
+      chrome.action.setBadgeBackgroundColor({color: "#4CAF50", tabId: sender.tab.id});
+    }
+  });

@@ -2,7 +2,7 @@ html {
   background-color: white;
   width: 600px;
   max-height: 600px;
-  height: auto;
+  min-height: 275px;
 }
 
 body{
@@ -10,8 +10,9 @@ body{
   width: 100%;
   text-align: center;
   font-family: "Whitney SSm A","Whitney SSm B",sans-serif;
-
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: auto;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
 }
 
 /* Scroll Bar */
@@ -252,20 +253,19 @@ input:checked + .slider:before {
   min-height: 80px;
   max-height: 250px;
   color: black;
-  border: none;
   background-color: white;
+  border: none;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
 }
 
 .compatText{
   font-size: 14px;
-  font-style: italic;
   text-align: center;
   margin-top: 30px;
 }
 
 .techDisplay{
-  display: grid;
+  display: none;
   grid-template-columns: .25fr 1fr .25fr;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -317,7 +317,7 @@ input:checked + .slider:before {
 }
 
 .ratingDiv{
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   border-bottom-left-radius: 5px;
@@ -488,52 +488,41 @@ input[type="text"]#opBox {
   fill: #242424;
 }
 
-/* Drew's Tooltip Container */
- .tooltip {
+.tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  cursor: pointer;
 }
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-
-  /* Position the tooltip text */
+.tooltip::after {
+  content: attr(data-tooltip);
   position: absolute;
-  z-index: 1;
   bottom: 125%;
   left: 50%;
-  margin-left: -60px;
-
-  /* Fade in tooltip */
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  z-index: 1;
   opacity: 0;
-  transition: opacity 0.3s;
+  visibility: hidden;
+  transition: opacity 0.2s;
 }
 
-/* Tooltip arrow */
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+.tooltip:hover::after {
   opacity: 1;
+  visibility: visible;
 }
+
+/*Awin Logo*/
+.st0{fill:#FF6600;}
+.st1{fill:#E74030;}
+.st2{fill:#FAB418;}
+.st3{fill:#DE0732;}
+.st4{fill:#DE0733;}
+.st5{fill:#CC1D46;}
 
 :root{
   --light-orange: #ffad77;

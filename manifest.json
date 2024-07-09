@@ -4,7 +4,7 @@
   "author": "Andrew Niziolek",
 
   "name": "Awin Helper",
-  "description": "This extension is to assist Awin Staff in their daily activities. This is a community made extension.",
+  "description": "This is a community-developed extension to support Awin Staff in their daily responsibilities.",
 
   "icons": {
     "16": "assets/icon16.png",
@@ -12,12 +12,18 @@
     "128": "assets/icon128.png"
   },
 
+  "background": {
+    "service_worker": "background.js"
+  },
+
   "action": {"default_popup": "popup.html"},
 
   "permissions": 
   ["storage", 
-  "tabs", 
-  "scripting"
+  "tabs",
+  "activeTab",
+  "scripting",
+  "cookies"
   ],
 
   "host_permissions":

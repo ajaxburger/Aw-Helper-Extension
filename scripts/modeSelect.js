@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to update the visibilty of page elements.
     function updateButtonVisibility() {
         if (modeSwitch.checked) {
-            // If tech mode enabled, display (block) or hide (none) these elements.
+            // If tech mode enabled, display (block/flex) or hide (none) these elements.
             newImplView.style.display = 'block';
             testURLTech.style.display = 'block';
             clipboardView.style.display = 'block';
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
             testURLTech.style.display = 'none';
             clipboardView.style.display = 'none';
             compatibleView.style.display = 'block';
-            ratingText.style.display = 'flex';
         }
     }
 

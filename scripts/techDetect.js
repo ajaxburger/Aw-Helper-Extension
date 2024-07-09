@@ -6,8 +6,6 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 
   // Checks to see if the URL is a chrome browser page or awin.com URL and cancels if so.
   if (url.includes("chrome://") || url.includes("awin.com") || url.includes("google.com") || url.includes("microsoftedge")) {
-    const restrictedStatus = document.getElementById("restrictedStatus");
-    restrictedStatus.textContent = "Restricted URL";
   } else {
     chrome.scripting.executeScript({
       target: {tabId: tabs[0].id}, // Targets active tab
@@ -67,6 +65,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                   return true;
               }
           }
+
           // Detect WP Rocket - Lazy loading
           if (document.getElementsByClassName("rocket-lazyload").length >= 1)
           {
@@ -81,17 +80,10 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           return false;
         };
 
-        const checkCookie = () => {
-          const cookies = document.cookie.split(";")
-          
-          // Trim leading spaces from cookies
-          // cookies = cookies.map(function (el) {
-          //   return el.trim();
-          // });
-
-          for (let i = 0; i < cookies.length; i++){
-            if (cookies[i].includes("_aw_sn")){
-              awc = cookies[i]
+        const checkAWCookie = () => {
+          const cookies = document.cookie.split("; ");
+          for (let i = 0; i < cookies.length; i++) {
+            if (cookies[i].includes("_aw_sn")) {
               return true;
             }
           }
@@ -100,7 +92,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 
         // If checkGTM function returns true, fire runtime message to pull status out of current tab.
         if (checkGTM()) {
-          chrome.runtime.sendMessage({status: "GTM Detected: " + gtmID});
+          chrome.runtime.sendMessage({status: gtmID});
         }
 
         if (checkShopify()) {
@@ -110,40 +102,75 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         if (checkWooComm()) {
           chrome.runtime.sendMessage({status: "WooCommerce Detected"});
         }
-
         if (checkNativeLazyLoading()) {
           chrome.runtime.sendMessage({status: "Native Wordpress Lazy Loading Detected"});
         }
-
         if (checkPluginLazyLoading()) {
           chrome.runtime.sendMessage({status: "Plugin Lazy Loading Detected"});
         }
 
-        if (checkCookie()) {
-          chrome.runtime.sendMessage({status: awc});
+        if (checkAWCookie()) {
+          chrome.runtime.sendMessage({ status: "AW Cookie Detected" });
         }
+
       }
     });
   }
 });
 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  try {
+    if (request.status && (request.status.includes("GTM") || request.status.includes("WooCommerce Detected") || request.status.includes("Plugin Lazy Loading Detected") || request.status.includes("Shopify Detected"))) {
+      const compatText = document.getElementById("compatData");
+      const easeMSG = document.getElementById("ratingBox");
+
+      if (compatText && easeMSG) {
+        compatText.textContent = "Site is compatible!";
+        compatText.style.fontWeight = "bold";
+        compatText.style.color = "#18a45b";
+        easeMSG.style.display = 'flex';
+      }
+    }
+  } catch (error) {
+    console.error('Error in onMessage listener:', error);
+  }
+});
+
+
 // Listens for "GTM Detected" and adjusts popup HTML based on response.
 // These sections to remain modular for changes in their display type.
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.status.includes("GTM")) {
-    const gtmStatus = document.getElementById("gtmStatus");
-    if (gtmStatus) {
-      gtmStatus.textContent = request.status;
+  try {
+    if (request.status && request.status.includes("GTM")) {
+      const gtmPanel = document.getElementById("gtmDisplay");
+      const gtmStatus = document.getElementById("gtmText");
+
+      if (gtmPanel && gtmStatus) {
+        gtmPanel.style.display = 'grid';
+        gtmStatus.textContent = request.status;
+      } else {
+        if (gtmPanel) {
+          gtmPanel.style.display = 'none';
+        }
+      }
     }
+  } catch (error) {
+    console.error('Error in onMessage listener:', error);
   }
 });
+
 
 // Needs fixing.
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.status === "WooCommerce Detected") {
-    const wooStatus = document.getElementById("WoocommerceStatus");
+    const wooPanel = document.getElementById("wooCommDisplay");
+    const wooStatus = document.getElementById("wooCommStatus");
     if (wooStatus) {
-      wooStatus.textContent = "WooCommerce detected!";
+      wooPanel.style.display = 'grid';
+      wooStatus.textContent = "WooCommerce";
+    }
+    else {
+      wooPanel.style.display = 'none';
     }
   }
 });
@@ -168,19 +195,22 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.status === "Shopify Detected") {
-    const dwin1Status = document.getElementById("ShopifyStatus");
-    if (dwin1Status) {
-      dwin1Status.textContent = "Shopify detected!";
+    const shopifyStatus = document.getElementById("ShopifyStatus");
+    if (shopifyStatus) {
+      shopifyStatus.textContent = "Shopify";
     }
   }
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.status.includes("_aw_sn")) {
-    const conversionAWC = document.getElementById("conversionAWC");
-    if (conversionAWC) {
-      tooltipAWCText.textContent = request.status.split("=")[1];
-      conversionAWC.textContent = "AWC Detected";
+  try {
+    if (request.status && request.status.includes("AW Cookie Detected")) {
+      const awPanel = document.getElementById("awCookieDisplay");
+      if (awCookieText && awPanel) {
+        awPanel.style.display = 'grid';
+      }
     }
+  } catch (error) {
+    console.error('Error in onMessage listener:', error);
   }
 });
