@@ -1,6 +1,7 @@
 html {
   background-color: white;
   width: 600px;
+  max-height: 600px;
   height: auto;
 }
 
@@ -242,10 +243,32 @@ input:checked + .slider:before {
   text-align: center;
 }
 
+.compatibleDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  min-height: 80px;
+  max-height: 250px;
+  color: black;
+  border: none;
+  background-color: white;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
+}
+
+.compatText{
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+  margin-top: 30px;
+}
+
 .techDisplay{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: .25fr 1fr;
   border-radius: 5px;
+  margin-bottom: 10px;
   height: 80px;
   color: black;
   border: none;
@@ -253,7 +276,11 @@ input:checked + .slider:before {
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
 }
 
-.gtmStatus{
+.techIcon{
+
+}
+
+.techReadout{
   
 }
 
@@ -308,7 +335,7 @@ hr.solid {
   color: black;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.1s ease-out;
+  transition: max-height 0.1s ease-in-out;
 }
 
 /* -- New Impl -- */
