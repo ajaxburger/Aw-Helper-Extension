@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const testURLTech = document.getElementById('testURLTech');
     const clipboardView = document.getElementById('clipboard');
     const compatibleView = document.getElementById('compatibleBox');
+    const ratingText = document.getElementById('ratingBox');
 
     // Function to update the visibilty of page elements.
     function updateButtonVisibility() {
@@ -13,11 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
             testURLTech.style.display = 'block';
             clipboardView.style.display = 'block';
             compatibleView.style.display = 'none';
+            ratingText.style.display = 'none';
         } else {
             newImplView.style.display = 'none';
             testURLTech.style.display = 'none';
             clipboardView.style.display = 'none';
             compatibleView.style.display = 'block';
+            ratingText.style.display = 'flex';
         }
     }
 
