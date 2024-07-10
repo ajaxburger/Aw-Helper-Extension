@@ -22,6 +22,9 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
   // Checks to see if the URL is a chrome browser page or awin.com URL and cancels if so.
   if (url.includes("chrome://") || url.includes("awin.com") || url.includes("google.com") || url.includes("microsoftedge")) {
     const restrictedStatus = document.getElementById("siteURLText");
+    const compatText = document.getElementById("compatData");
+    compatText.textContent = "Restricted URL";
+    compatText.style.fontStyle = "Italic";
     restrictedStatus.textContent = "Restricted URL";
   } else {
       function getDomain(url) {
@@ -81,9 +84,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
               tooltipText = masterTags.slice(1).join(', ');
           }
 
-          const dwin1Status = document.getElementById("dwin1Status");
+          const dwin1Status = document.getElementById("awcChip");
+          const awinPanel = document.getElementById("awcDisplay")
           if (dwin1Status) {
               dwin1Status.textContent = message;
+              awinPanel.style.display = 'grid';
               if (tooltipText) {
                   dwin1Status.setAttribute('data-tooltip', tooltipText);
                   dwin1Status.classList.add('tooltip');

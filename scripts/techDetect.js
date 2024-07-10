@@ -80,16 +80,6 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           return false;
         };
 
-        const checkAWCookie = () => {
-          const cookies = document.cookie.split("; ");
-          for (let i = 0; i < cookies.length; i++) {
-            if (cookies[i].includes("_aw_sn")) {
-              return true;
-            }
-          }
-          return false;
-        };
-
         // If checkGTM function returns true, fire runtime message to pull status out of current tab.
         if (checkGTM()) {
           chrome.runtime.sendMessage({status: gtmID});
@@ -109,18 +99,16 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           chrome.runtime.sendMessage({status: "Plugin Lazy Loading Detected"});
         }
 
-        if (checkAWCookie()) {
-          chrome.runtime.sendMessage({ status: "AW Cookie Detected" });
-        }
-
       }
     });
   }
 });
 
+const modeCheck = document.getElementById("modeSwitch");
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   try {
-    if (request.status && (request.status.includes("GTM") || request.status.includes("WooCommerce Detected") || request.status.includes("Plugin Lazy Loading Detected") || request.status.includes("Shopify Detected"))) {
+    if (!modeCheck.checked && request.status && (request.status.includes("GTM") || request.status.includes("WooCommerce Detected") || request.status.includes("Plugin Lazy Loading Detected") || request.status.includes("Shopify Detected"))) {
       const compatText = document.getElementById("compatData");
       const easeMSG = document.getElementById("ratingBox");
 
@@ -135,6 +123,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     console.error('Error in onMessage listener:', error);
   }
 });
+
 
 
 // Listens for "GTM Detected" and adjusts popup HTML based on response.
@@ -199,18 +188,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (shopifyStatus) {
       shopifyStatus.textContent = "Shopify";
     }
-  }
-});
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  try {
-    if (request.status && request.status.includes("AW Cookie Detected")) {
-      const awPanel = document.getElementById("awCookieDisplay");
-      if (awCookieText && awPanel) {
-        awPanel.style.display = 'grid';
-      }
-    }
-  } catch (error) {
-    console.error('Error in onMessage listener:', error);
   }
 });
