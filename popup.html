@@ -21,7 +21,7 @@
 					</svg>
 				</div>
 				<h3 class="headText">Awin Helper</h3>
-				<p class="headVer">2.0</p>
+				<p class="headVer">2.0.1</p>
 				<p class="headAdv">Tech Mode</p>
 				<label class="headModeSwitch">
 					<input type="checkbox" id="modeSwitch">
@@ -97,6 +97,15 @@
 					</div>
 					<span class="chip chipAwin" id="awcChip">Detected</span>
 				</div>
+				<div class="techDisplay" id="launchDisplay">
+					<div class="techIcon">
+						<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90%" height="90%" viewBox="0 0 270 270"><path d="M0,42.17C0,18.86,18.86,0,42.17,0h185.65c23.31,0,42.17,18.86,42.17,42.17v185.65c0,23.31-18.86,42.17-42.17,42.17H42.17c-23.31,0-42.17-18.86-42.17-42.17V42.17Z" style="fill:#fa0f00; stroke-width:0px;"/><path d="M156.37,61.04l64.91,147.99h-46.05l-40.2-91.59-24.45,55.83h28.71l15.69,35.76H48.78L113.69,61.04h42.68Z" style="fill:#fff; stroke-width:0px;"/></svg>
+					</div>
+					<div class="techData">
+						<p class="techReadout" id="launchText">Adobe Launch</p>
+					</div>
+					<span class="chip chipDifficult" id="launchChip">Difficult</span>
+				</div>
 				<div class="techDisplay" id="gtmDisplay">
 					<div class="techIcon">
 						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90%" height="90%" viewBox="0 0 48 48">
@@ -108,7 +117,16 @@
 					</div>
 					<span class="chip chipModerate" id="gtmChip">Moderate</span>
 				</div>
-				<div class="techDisplay" id="ShopifyDisplay">
+				<div class="techDisplay" id="gtSSDisplay">
+					<div class="techIcon">
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90%" height="90%"  viewBox="0 0 24 24"><polygon points="21.74 12.89 17.62 17.02 16.56 15.95 18.88 13.64 11.26 13.64 11.26 12.14 18.88 12.14 16.56 9.82 17.62 8.76 21.74 12.89" style="fill:#4285f4"/><path d="M11.77,4.76l.3.3V6l-.3.3A4.69,4.69,0,0,0,7.4,10l-.13.51-.52.05a3.19,3.19,0,0,0-3,3,2.83,2.83,0,0,0,0,.41L2.52,15a4.1,4.1,0,0,1-.28-1.48A4.61,4.61,0,0,1,6.09,9.14,6.12,6.12,0,0,1,11.77,4.76Z" style="fill:#aecbfa"/><polygon points="14.01 17.45 6.38 17.45 8.7 19.77 7.64 20.83 3.51 16.7 7.64 12.57 8.7 13.64 6.38 15.95 14.01 15.95 14.01 17.45" style="fill:#4285f4"/><path d="M16.63,7.49l-1.1,1a4.45,4.45,0,0,0-3.76-2.27V4.76A5.88,5.88,0,0,1,16.63,7.49Z" style="fill:#669df6"/></svg>
+					</div>
+					<div class="techData">
+						<p class="techReadout" id="gtSSText">GTM Server-Side</p>
+					</div>
+					<span class="chip chipModerate" id="gtSSChhip">Moderate</span>
+				</div>
+				<div class="techDisplay" id="shopifyDisplay">
 					<div class="techIcon">
 						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90%" height="90%" viewBox="0 0 48 48">
 							<path fill="#7cb342" d="M37.216,11.78c-0.023-0.211-0.211-0.305-0.351-0.305s-3.21-0.234-3.21-0.234s-2.132-2.132-2.39-2.343	c-0.234-0.234-0.68-0.164-0.867-0.117c-0.023,0-0.469,0.141-1.195,0.375c-0.726-2.086-1.968-3.984-4.194-3.984h-0.211	C24.187,4.375,23.391,4,22.735,4c-5.155,0-7.639,6.444-8.412,9.725c-2.015,0.633-3.445,1.054-3.609,1.125	c-1.125,0.351-1.148,0.375-1.289,1.429c-0.117,0.797-3.046,23.456-3.046,23.456L29.179,44l12.373-2.671	C41.575,41.282,37.24,11.991,37.216,11.78z M27.937,9.483c-0.562,0.164-1.242,0.375-1.921,0.609V9.671	c0-1.265-0.164-2.296-0.469-3.117C26.718,6.695,27.445,7.984,27.937,9.483L27.937,9.483z M24.117,6.812	c0.305,0.797,0.516,1.922,0.516,3.468v0.234c-1.265,0.398-2.601,0.797-3.984,1.242C21.422,8.804,22.899,7.351,24.117,6.812	L24.117,6.812z M22.617,5.359c0.234,0,0.469,0.094,0.656,0.234c-1.664,0.773-3.421,2.718-4.148,6.655	c-1.101,0.351-2.156,0.656-3.163,0.984C16.806,10.233,18.915,5.359,22.617,5.359z"></path><path fill="#558b2f" d="M36.865,11.428c-0.141,0-3.21-0.234-3.21-0.234s-2.132-2.132-2.39-2.343	C31.17,8.757,31.053,8.71,30.96,8.71L29.249,44l12.373-2.671c0,0-4.335-29.338-4.359-29.549	C37.169,11.569,37.005,11.475,36.865,11.428z"></path><path fill="#fff" d="M24.792,18.593l-1.475,4.449c0,0-1.337-0.715-2.927-0.715c-2.374,0-2.489,1.498-2.489,1.867	c0,2.028,5.301,2.812,5.301,7.583c0,3.757-2.374,6.177-5.578,6.177c-3.872,0-5.808-2.397-5.808-2.397l1.037-3.411	c0,0,2.028,1.752,3.734,1.752c1.129,0,1.59-0.876,1.59-1.521c0-2.651-4.333-2.766-4.333-7.145c0-3.665,2.628-7.214,7.952-7.214	C23.777,17.994,24.792,18.593,24.792,18.593z"></path>
@@ -139,7 +157,7 @@
 					<div class="techData">
 						<p class="techReadout">Magento</p>
 					</div>
-					<span class="chip chipEasy" id="magentoChip">Easy</span>
+					<span class="chip chipModerate" id="magentoChip">Moderate</span>
 				</div>
 			<script src="scripts/techDetect.js"></script>
 			</div>

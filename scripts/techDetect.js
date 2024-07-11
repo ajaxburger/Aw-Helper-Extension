@@ -16,10 +16,25 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           gtmID = "";
           for (let i = 0; i < scripts.length; i++) {
             if (scripts[i].src.includes("gtm.js")) {
-              // Outputs the GTM IDs - working on detecting multiple
-              //gtmID = gtmID + scripts[i].src.slice(-11);
-              gtmID = scripts[i].src.slice(-11);
+              // Extract the GTM ID and remove any "=" character
+              const gtmIDWithEqual = scripts[i].src.slice(-11);
+              gtmID = gtmIDWithEqual.replace("=", "");
               return true;
+            }
+          }
+          return false;
+        };
+
+        const checkGTSS = () => {
+          const scripts = document.getElementsByTagName("script");
+        
+          for (let i = 0; i < scripts.length; i++) {
+            const src = scripts[i].src;
+            if (src.includes("googletagmanager.com")) {
+              const urlParams = new URLSearchParams(src.split('?')[1]);
+              if (urlParams.has('id')) {
+                return true;
+              }
             }
           }
           return false;
@@ -44,6 +59,17 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           }
           return false;
         };
+
+        const checkAdobeLaunch = () => {
+          const scripts = document.getElementsByTagName("script");
+          for (let i = 0; i < scripts.length; i++) {
+            if (scripts[i].src.includes("adobedtm")) {
+              return true;
+            }
+          }
+          return false;
+        };
+        
 
         const checkNativeLazyLoading = () => {
           const images = document.getElementsByTagName("img");
@@ -85,6 +111,10 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           chrome.runtime.sendMessage({status: gtmID});
         }
 
+        if (checkGTSS()) {
+          chrome.runtime.sendMessage({status: "GTSS Found"});
+        }
+
         if (checkShopify()) {
           chrome.runtime.sendMessage({status: "Shopify Detected"});
         }
@@ -92,6 +122,11 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         if (checkWooComm()) {
           chrome.runtime.sendMessage({status: "WooCommerce Detected"});
         }
+
+        if (checkAdobeLaunch()) {
+          chrome.runtime.sendMessage({status: "Adobe Launch Found"});
+        }        
+
         if (checkNativeLazyLoading()) {
           chrome.runtime.sendMessage({status: "Native Wordpress Lazy Loading Detected"});
         }
@@ -148,8 +183,47 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  try {
+    if (request.status && request.status.startsWith("GTSS")) {
+      const gtssPanel = document.getElementById("gtSSDisplay");
+      const gtSStatus = document.getElementById("gtSSText");
 
-// Needs fixing.
+      if (gtssPanel && gtSStatus) {
+        gtssPanel.style.display = 'grid';
+        gtSStatus.textContent = "GTM Server-Side";
+      } else {
+        if (gtssPanel) {
+          gtssPanel.style.display = 'none';
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error in onMessage listener:', error);
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.status === "Shopify Detected") {
+    const shopifyPanel = document.getElementById("shopifyDisplay");
+    if (shopifyPanel) {
+      shopifyPanel.style.display = 'grid';
+    } 
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.status === "Adobe Launch Found") {
+      const adobeLaunchPanel = document.getElementById("launchDisplay");
+      const adobeLaunchStatus = document.getElementById("launchText");
+      if (adobeLaunchPanel) {
+        adobeLaunchPanel.style.display = 'grid';
+        adobeLaunchStatus.textContent = "Adobe Launch";
+      }
+    }
+});
+
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.status === "WooCommerce Detected") {
     const wooPanel = document.getElementById("wooCommDisplay");
@@ -178,15 +252,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const status = document.getElementById("pluginLazyLoadingStatus");
     if (status) {
       status.textContent = "Plugin Wordpress Lazy Loading";
-    }
-  }
-});
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.status === "Shopify Detected") {
-    const shopifyStatus = document.getElementById("ShopifyStatus");
-    if (shopifyStatus) {
-      shopifyStatus.textContent = "Shopify";
     }
   }
 });
