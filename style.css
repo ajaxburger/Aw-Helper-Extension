@@ -1,14 +1,17 @@
 html {
   background-color: white;
+  width: 600px;
+  max-height: 600px;
+  min-height: 275px;
 }
 
 body{
   color: white;
-  width: 300px;
+  width: 100%;
   text-align: center;
-  font-family: "Whitney SSm A","Whitney SSm B",Tahoma,sans-serif;
-
-  -webkit-font-smoothing: antialiased;
+  font-family: Tahoma, sans-serif;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: grayscale
 }
 
 /* Scroll Bar */
@@ -23,7 +26,137 @@ body{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ff7920;;
+  background: var(--orange);;
+}
+
+.headerContainer {
+  max-width: 97%;
+}
+
+/* Header Styling */
+.headerDiv{
+  grid-area: header;
+  display: grid;
+  grid-template-columns: .15fr .15fr 1fr .15fr .15fr;
+  grid-template-areas: "head-a1 head-a head-b head-c head-d";
+  background: var(--orange);
+  justify-content: center;
+  height: 2.5rem;
+  padding: 0 1.5rem;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.headAttrib{
+  grid-area: head-c;
+  padding-top: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.headText{
+  grid-area: head-b;
+  position: relative;
+  bottom: 5px;
+  font-size: 16px;
+}
+
+.headVer{
+  grid-area: head-d;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.headAdv{
+  grid-area: head-a1;
+  position: relative;
+  bottom: 7px;
+}
+
+.headMode input{
+  position: absolute;
+  opacity: 0;
+}
+
+/* The headModeSwitch - the box around the slider */
+.headModeSwitch {
+  grid-area: head-a;
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+  width: 56px;
+  height: 28px;
+}
+
+/* Hide default HTML checkbox */
+.headModeSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #e35b00;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #e35b00;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.extBody{
+  display: grid; 
+  grid-auto-flow: column; 
+  grid-auto-rows: 1fr; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 0px 10px;
+  max-width: 97%; 
+}
+
+.leftContainer{
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.rightContainer{
+  grid-area: 1 / 2 / 2 / 3;
 }
 
 /* Legends */
@@ -31,100 +164,33 @@ body{
   background-color: #5e5e5e;
   color: white;
   text-align: left;
-  padding-left: 3px;
-  padding-right: 3px;
-
+  padding-left: 4px;
+  padding-right: 5px;
+  border-radius: 3px;
 }
 
 /* Fieldset */
 .field_set{
-  border-color: #5e5e5e;
+  border: 2px solid #e0e0e0;
   margin-top: 5px;
   border-radius: 3px;
 }
 
-/* Header Styling */
-.headerDiv{
+.siteInfoDiv{
   display: grid;
-  grid-template-columns: .15fr 1fr .15fr;
-  grid-template-areas: "a b c";
-  background: #ff7920;
-  justify-content: center;
-  align-items: center;
-  height: 2.5rem;
-  padding: 0 1.5rem;
-  margin-bottom: 5px;
+  grid-template-rows: 1fr 1fr;
 
   border-radius: 5px;
-}
-
-.headText{
-  grid-area: b;
-}
-
-.headVer{
-  grid-area: c;
-}
-
-.headAttrib{
-  grid-area: a;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-/* External Buttons */
-.extButtons{
-  display: grid;
-  grid-template-columns: .5fr .5fr .5fr;
-  gap: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.link-button {
-  color: white;
+  height: 40px;
+  color: black;
   border: none;
-  background-color: #5e5e5e;
-  transition: 0.2s;
+  background-color: #dfdfdf;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
 }
 
-.link-button:hover{
-  color: #5e5e5e;
-  background-color: #ff7920;
-  cursor: pointer;
-}
-
-/* Wiki Classes */
-.wikiDiv{
-  display: grid;
-  grid-template-columns: 1fr 0.3fr;
-  gap: 3px;
-
-  margin: 3px 0px 0px 0px;
-}
-
-/* Clipboard Classes */
-.clipDiv{
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr .5fr;
-  gap: 4px;
-
-  margin: 3px 0px 3px 0px;
-}
-
-.clipInput{
-  border-radius: 5px;
-
-  height: 25px;
-  color: white;
-  border: none;
-  background-color: #777;
-  text-align: left;
-}
-
-.clipInput::placeholder{
-  color: #c7c7c7;
+.siteURL{
+  font-size: 100%;
+  font-style: italic;
 }
 
 /* Mastertag Classes */
@@ -142,6 +208,31 @@ body{
   margin-top: 3px;
 }
 
+/* Clipboard Classes */
+.clipDiv{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr .5fr;
+  gap: 4px;
+
+  margin: 3px 0px 3px 0px;
+}
+
+.clipInput{
+  border-radius: 5px;
+
+  height: 25px;
+  color: #444;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.clipInput::placeholder{
+  color: #444;
+}
+
 .mtPresent{
   grid-area: a;
   text-align: right;
@@ -152,19 +243,108 @@ body{
   text-align: center;
 }
 
-/* Technologies / MT Classes */
-.techDiv{
-  color: #242424;
-  vertical-align: middle;
-  text-align: center;
+.compatibleDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  min-height: 80px;
+  max-height: 250px;
+  color: black;
+  background-color: white;
+  border: none;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
+}
 
+.compatText{
+  font-size: 14px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.techDisplay{
+  display: none;
+  grid-template-columns: .25fr 1fr .35fr;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 80px;
+  color: black;
+  border: none;
+  background-color: #ffffff;
+  justify-content: center;
+  vertical-align: middle;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
+}
+
+.techIcon{
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.techReadout{
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 15px;
   font-size: 16px;
+  font-weight: 500;
+}
+
+.chip{
+  font-size: 14px;
+  color: white;
+  border-radius: 15px;
+  height: min-content;
+  width: min-content;
+  margin-top: 27px;
+  margin-right: 15px;
+  cursor: pointer;
+  padding: 7px;
+}
+
+.chipAwin{
+  white-space: nowrap;
+  background-color: #18a45b;
+}
+
+.chipEasy{
+  background-color: #18a45b;
+}
+
+.chipModerate{
+  background-color: #d8a037;
+}
+
+.chipDifficult{
+  background-color: #a42818;
+}
+
+.ratingDiv{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 40px;
+  margin-top: 10px;
+  color: black;
+  border: none;
+  background-color: white;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
+}
+
+.chipRating{
+  color: var(--high-orange);
+  height: 7px;
+  width: 7px;
+  background-color: var(--high-orange);
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
 /* Collapse Section Dividers */
 hr.solid {
-  border-top: 1px solid #ff79207a;
-  border-bottom: 1px solid #ff79207a;
+  border-bottom: 1px solid #e0e0e0;
   border-right-width: 0px;
   border-left-width: 0px;
   margin-top: 4px;
@@ -173,10 +353,11 @@ hr.solid {
 
 /* Collapsibles */
 .collapsible {
-  color: white;
-  background-color: #5e5e5e;
+  color: black;
+  background-color: #dfdfdf;
   cursor: pointer;
-  padding: 18px;
+  padding-left: 18px;
+  height: 40px;
   width: 100%;
   border: none;
   vertical-align: middle;
@@ -184,19 +365,20 @@ hr.solid {
   outline: none;
   font-size: 14px;
   transition: 0.2s;
+  margin-top: 3px;
   margin-bottom: 3px;
   border-radius: 5px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Color */
 }
 
 .active, .collapsible:hover {
-  color: #242424;
-  background-color: #ff7920;
-
+  color: white;
+  background-color: var(--dark-orange);
 }
 
 .collapsible:after {
   color: transparent;
-  text-shadow: 0 0 0 white;
+  text-shadow: 0 0 0 #5e5e5e;
   content: '\02795'; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
   float: right;
@@ -208,12 +390,10 @@ hr.solid {
 }
 
 .collapse-content {
-  color: #242424;
-  padding: 0 18px;
+  color: black;
   max-height: 0;
   overflow: hidden;
-
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.1s ease-in-out;
 }
 
 /* -- New Impl -- */
@@ -227,14 +407,15 @@ hr.solid {
   grid-template-rows: 2;
   gap: 4px;
   place-items: center;
+  margin-top: 5px;
   margin-bottom: 2px;
 }
 
 /*Generate Button Properties*/
 .append-button {
-  color: #424242;
+  color: var(--high-orange);
   background-color:white;
-  border: 1.9px solid #424242;
+  border: 1.9px solid var(--high-orange);
   border-radius: 25px;
   margin: 5px;
   transition: 0.2s;
@@ -242,13 +423,14 @@ hr.solid {
 
 .append-button:hover{
   color: #424242;
-  background-color: #ff7920;
+  background-color: var(--orange);
+  border: 1.9px solid var(--orange);
   cursor:pointer;
 }
 
 .append-button:active{
   color:black;
-  background-color:#ffad77;
+  background-color:var(--light-orange);
 }
 
 /*Checkbox Grid Classes*/
@@ -265,12 +447,12 @@ hr.solid {
 
 .opttext {
   color: white;
-  border-left: 2px solid #ff7920;
+  border-left: 2px solid var(--orange);
   padding-left: 15px;
 }
 
 input[type="checkbox"] {
-	accent-color:#ff7920;
+	accent-color:var(--orange);
 	width: 1.3em;
   cursor: pointer;
 }
@@ -309,51 +491,47 @@ input[type="text"]#opBox {
   fill: #242424;
 }
 
-/* Added by Drew */
-
- /* Tooltip container */
- .tooltip {
+.tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  cursor: pointer;
 }
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-
-  /* Position the tooltip text */
+.tooltip::after {
+  content: attr(data-tooltip);
   position: absolute;
-  z-index: 1;
   bottom: 125%;
   left: 50%;
-  margin-left: -60px;
-
-  /* Fade in tooltip */
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  z-index: 1;
   opacity: 0;
-  transition: opacity 0.3s;
+  visibility: hidden;
+  transition: opacity 0.2s;
 }
 
-/* Tooltip arrow */
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+.tooltip:hover::after {
   opacity: 1;
-} 
+  visibility: visible;
+}
+
+/*Awin Logo*/
+.st0{fill:#FF6600;}
+.st1{fill:#E74030;}
+.st2{fill:#FAB418;}
+.st3{fill:#DE0732;}
+.st4{fill:#DE0733;}
+.st5{fill:#CC1D46;}
+
+:root{
+  --light-orange: #ffad77;
+  --orange: #fc8e45;
+  --high-orange: #ff6600;
+  --dark-orange: #fc8e45;
+  --light-gray: #e0e0e0;
+  --dark-gray: #242424;
+}
