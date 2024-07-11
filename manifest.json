@@ -22,7 +22,8 @@
   ["storage", 
   "tabs",
   "activeTab",
-  "scripting"
+  "scripting",
+  "tabGroups"
   ],
 
   "content_scripts": [

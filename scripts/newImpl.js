@@ -2,10 +2,26 @@
 const importMIDBox = document.getElementById("implMIDBox");
 const goBtn = document.getElementById("newImplBtn");
 
-// createTabs function using the Chrome Tabs API
-function createTabs(URLs) {
-  URLs.forEach((url) => {
-    chrome.tabs.create({ url });
+
+// createTabs and Group them using Chrome API
+function createAndGroupTabs(URLs) {
+  let tabIds = [];
+
+  const tabMID = importMIDBox.value;
+  URLs.forEach((url, index) => {
+    chrome.tabs.create({ url: url, active: false }, (tab) => {
+      tabIds.push(tab.id);
+      if (tabIds.length === URLs.length) {
+        // Once all tabs are created, group them
+        chrome.tabs.group({ tabIds: tabIds }, (groupId) => {
+          // Update the group with a name and color
+          chrome.tabGroups.update(groupId, {
+            title: tabMID,
+            color: 'orange'
+          });
+        });
+      }
+    });
   });
 }
 
@@ -22,5 +38,5 @@ goBtn.addEventListener("click", () => {
     `https://ui2.awin.com/adminarea/provider/membershipmanager.php`
   ];
 
-  createTabs(URLs);
+  createAndGroupTabs(URLs);
 });
