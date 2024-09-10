@@ -31,6 +31,7 @@ goBtn.addEventListener("click", () => {
   const URLs = [
     `https://ui.awin.com/tracking-settings/us/awin/advertiser/${MIDValue}/main-settings`,
     `https://ui.awin.com/commission-manager/us/awin/merchant/${MIDValue}/commission-groups`,
+    `https://ui.awin.com/advertiser-mastertag/us/awin/${MIDValue}/plugins`,
     `https://ui.awin.com/advertiser-mastertag/us/awin/${MIDValue}/trackingtagsettings`,
     `https://ui.awin.com/provider/merchant-settings/${MIDValue}/account-details/network/awin`,
     `https://ui.awin.com/provider/finance/fee-manager/en/${MIDValue}`,

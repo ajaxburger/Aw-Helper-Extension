@@ -87,7 +87,6 @@ class Analytics {
           }
           console.log('GA response:', await response.text()); // Log the response from GA
         } catch (e) {
-          console.error('Google Analytics request failed with an exception', e);
         }
       }
       

@@ -2,6 +2,7 @@
 
 This is a community-developed extension to support Awin Staff in their daily responsibilities.
 
+
 ## Installation
 
 Chrome Webstore - https://chrome.google.com/webstore/detail/awin-helper/ddfnphknakdknhcolehloanbkeppaomo?hl=en&authuser=0
