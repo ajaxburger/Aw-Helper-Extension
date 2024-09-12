@@ -2,7 +2,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     const url = tabs[0].url;
   
     // Checks to see if the URL is a chrome browser page or awin.com URL and cancels if so.
-    if (url.includes("chrome://") || url.includes("awin.com") || url.includes("google.com") || url.includes("microsoftedge")) {
+    if (url.includes("chrome://") || url.includes("edge://") ||url.includes("awin.com") || url.includes("google.com") || url.includes("microsoftedge") || url.includes("force.com") || url.includes("edge://")) {
       const restrictedStatus = document.getElementById("restrictedStatus");
       restrictedStatus.textContent = "Restricted URL";
     } else {

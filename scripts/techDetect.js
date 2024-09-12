@@ -1,11 +1,8 @@
-// DO NOT CHANGE the way that this system works. I've attempted to nest these
-// functions and have not been able to get it functioning.
-
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
   const url = tabs[0].url;
 
   // Checks to see if the URL is a chrome browser page or awin.com URL and cancels if so.
-  if (url.includes("chrome://") || url.includes("awin.com") || url.includes("google.com") || url.includes("microsoftedge")) {
+  if (url.includes("chrome://") || url.includes("edge://") ||url.includes("awin.com") || url.includes("google.com") || url.includes("microsoftedge") || url.includes("force.com") || url.includes("edge://")) {
   } else {
     chrome.scripting.executeScript({
       target: {tabId: tabs[0].id}, // Targets active tab
@@ -69,42 +66,6 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           }
           return false;
         };
-        
-
-        const checkNativeLazyLoading = () => {
-          const images = document.getElementsByTagName("img");
-          for (let i = 0; i < images.length; i++) {
-        
-            if ((images[i].loading == "lazy"))
-            {
-                return true;
-            }
-          }
-          return false;
-        };
-
-        const checkPluginLazyLoading = () => {
-          const images = document.getElementsByTagName("img");
-          for (let i = 0; i < images.length; i++) {
-            if ((images[i].className.includes("lazyloaded")) || (images[i].loading == "lazyloaded") || (images[i].className.includes("lazyload")) || (images[i].className.includes("lazyload")))
-              {
-                  return true;
-              }
-          }
-
-          // Detect WP Rocket - Lazy loading
-          if (document.getElementsByClassName("rocket-lazyload").length >= 1)
-          {
-            return true;
-          }
-          
-          // Detect W3 Total Cache - Lazy Loading
-          if (document.body.innerHTML.search("W3 Total Cache") > 1)
-          {
-            return true;
-          }
-          return false;
-        };
 
         // If checkGTM function returns true, fire runtime message to pull status out of current tab.
         if (checkGTM()) {
@@ -127,13 +88,6 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
           chrome.runtime.sendMessage({status: "Adobe Launch Found"});
         }        
 
-        if (checkNativeLazyLoading()) {
-          chrome.runtime.sendMessage({status: "Native Wordpress Lazy Loading Detected"});
-        }
-        if (checkPluginLazyLoading()) {
-          chrome.runtime.sendMessage({status: "Plugin Lazy Loading Detected"});
-        }
-
       }
     });
   }
@@ -143,7 +97,7 @@ const modeCheck = document.getElementById("modeSwitch");
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   try {
-    if (!modeCheck.checked && request.status && (request.status.includes("GTM") || request.status.includes("WooCommerce Detected") || request.status.includes("Plugin Lazy Loading Detected") || request.status.includes("Shopify Detected"))) {
+    if (!modeCheck.checked && request.status && (request.status.includes("GTM") || request.status.includes("WooCommerce Detected") || request.status.includes("Shopify Detected"))) {
       const compatText = document.getElementById("compatData");
       const easeMSG = document.getElementById("ratingBox");
 
@@ -158,8 +112,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     console.error('Error in onMessage listener:', error);
   }
 });
-
-
 
 // Listens for "GTM Detected" and adjusts popup HTML based on response.
 // These sections to remain modular for changes in their display type.
@@ -234,24 +186,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
     else {
       wooPanel.style.display = 'none';
-    }
-  }
-});
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.status === "Native Wordpress Lazy Loading Detected") {
-    const status = document.getElementById("nativeLazyLoadingStatus");
-    if (status) {
-      status.textContent = "Native Wordpress Lazy Loading";
-    }
-  }
-});
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.status === "Plugin Lazy Loading Detected") {
-    const status = document.getElementById("pluginLazyLoadingStatus");
-    if (status) {
-      status.textContent = "Plugin Wordpress Lazy Loading";
     }
   }
 });
