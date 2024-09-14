@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const modeSwitch = document.getElementById('modeSwitch');
     const newImplView = document.getElementById('newImplView');
+    const intReviewView = document.getElementById('intReviewView');
     const testURLTech = document.getElementById('testURLTech');
     const clipboardView = document.getElementById('clipboard');
     const compatibleView = document.getElementById('compatibleBox');
@@ -11,12 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modeSwitch.checked) {
             // If tech mode enabled, display (block/flex) or hide (none) these elements.
             newImplView.style.display = 'block';
+            intReviewView.style.display = 'block';
             testURLTech.style.display = 'block';
             clipboardView.style.display = 'block';
             compatibleView.style.display = 'none';
             ratingDiv.style.display = 'none';
         } else { // If simple mode enabled...
             newImplView.style.display = 'none';
+            intReviewView.style.display = 'none';
             testURLTech.style.display = 'none';
             clipboardView.style.display = 'none';
             compatibleView.style.display = 'flex';
