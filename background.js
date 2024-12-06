@@ -18,7 +18,7 @@ addEventListener('unhandledrejection', async (event) => {
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === 'update' && disableUpdatePopup === "0") {
     // Open a new tab in a new group when the extension is updated
-    chrome.tabs.create({ url: 'https://aniziolek.notion.site/Awin-Helper-Updates-1ec7c46530f34c3691e307f498284fd4?pvs=74', active: false }, (tab) => {
+    chrome.tabs.create({ url: 'https://aniziolek.notion.site/Awin-Helper-Updates-1ec7c46530f34c3691e307f498284fd4?pvs=74', active: true }, (tab) => {
       chrome.tabs.group({ tabIds: [tab.id] }, (groupId) => {
         chrome.tabGroups.update(groupId, {
           title: 'AWH Update',

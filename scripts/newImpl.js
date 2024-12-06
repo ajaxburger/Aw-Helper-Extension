@@ -4,7 +4,7 @@ const goBtn = document.getElementById("newImplBtn");
 
 
 // createTabs and Group them using Chrome API
-function createAndGroupTabs(URLs) {
+function createImplTabs(URLs) {
   let tabIds = [];
 
   const tabMID = importMIDBox.value;
@@ -37,8 +37,8 @@ goBtn.addEventListener("click", () => {
     `https://ui.awin.com/provider/finance/fee-manager/en/${MIDValue}`,
     `https://ui.awin.com/provider/merchant-settings/${MIDValue}/mobile-tracking/network/awin`,
     `https://ui2.awin.com/adminarea/provider/merchantdetail.php?mid=${MIDValue}`,
-    `https://ui2.awin.com/adminarea/provider/membershipmanager.php`
+    `https://ui.awin.com/provider/pre-join-publishers?advertiserId=${MIDValue}`
   ];
 
-  createAndGroupTabs(URLs);
+  createImplTabs(URLs);
 });
