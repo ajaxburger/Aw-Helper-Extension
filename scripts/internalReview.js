@@ -38,7 +38,7 @@ goIRBtn.addEventListener("click", () => {
     `https://ui.awin.com/provider/merchant-settings/${MIDValue}/mobile-tracking/network/awin`,
     `https://ui.awin.com/provider/finance/fee-manager/en/${MIDValue}`,
     `https://ui.awin.com/provider/pre-join-publishers?advertiserId=${MIDValue}`,
-    `https://ui2.awin.com/adminarea/provider/merchantdetail.php?mid=${MIDValue}`
+    `https://ui.awin.com/provider/migrated-advertiser-settings/${MIDValue}`
   ];
 
   createIRGroupTabs(URLs);
